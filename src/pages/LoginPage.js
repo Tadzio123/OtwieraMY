@@ -26,7 +26,7 @@ const Overlay = styled.div`
 const Container = styled.div`
   height: 33.8rem;
   width: 33.4rem;
-  padding: 0 1rem;
+  padding: 0 2rem;
   
   position: absolute;
   z-index: 100;
@@ -42,8 +42,8 @@ const LogoContainer = styled.div`
   width: 100%;
   display: flex;
   justify-content: center;
-  margin-top: 2.1rem;
-  margin-bottom: 2rem;
+  margin-top: 2.7rem;
+  margin-bottom: 2.1rem;
 `;
 
 const InputsContainer = styled.div`
@@ -51,7 +51,7 @@ const InputsContainer = styled.div`
   flex-direction: column;
   justify-content: space-between;
   height: 12rem;
-  margin-bottom: 3.5rem;
+  margin-bottom: 2.7rem;
 `;
 
 const ButtonContainer = styled.div`
