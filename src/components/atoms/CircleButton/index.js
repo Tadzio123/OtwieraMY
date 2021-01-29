@@ -32,21 +32,11 @@ const StyledButton = styled.div`
   ${({ buttonSize }) => handleButtonSize(buttonSize)}
 `;
 
-const Icon = styled.div`
-
-`;
-
 const CircleButton = ({
-  buttonSize, iconName, ...rest
-}) => {
-  const url = `assets/icons/${iconName}.svg`;
-
-  return (
-    <StyledButton buttonSize={buttonSize} {...rest}>
-      <img src={url} />
-    </StyledButton>
-  );
-};
+  buttonSize, ...rest
+}) => (
+  <StyledButton buttonSize={buttonSize} {...rest} />
+);
 
 CircleButton.propTypes = {
   buttonSize: PropTypes.oneOf(['sm', 'md']),
