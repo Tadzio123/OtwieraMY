@@ -71,15 +71,17 @@ Typography.propTypes = {
   component: PropTypes.oneOf([
     'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p',
   ]),
-  color: PropTypes.oneOf([
+  color: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.func,
     PropTypes.number,
     PropTypes.object,
   ]),
-  children: PropTypes.oneOf([
+  children: PropTypes.oneOfType([
     PropTypes.node,
     PropTypes.element,
+    PropTypes.object,
+    PropTypes.func,
   ]).isRequired,
 };
 

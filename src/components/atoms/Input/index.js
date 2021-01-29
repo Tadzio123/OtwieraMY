@@ -31,7 +31,7 @@ const Input = ({ error, ...rest }) => (
 );
 
 Input.propTypes = {
-  error: PropTypes.oneOf([
+  error: PropTypes.oneOfType([
     PropTypes.object,
     PropTypes.number,
     PropTypes.bool,

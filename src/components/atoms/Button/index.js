@@ -62,9 +62,10 @@ const handleButtonType = (buttonType) => {
 const StyledButton = styled.button`
   outline: none;
   border: none;
-  border-radius: .5rem;
   cursor: pointer;
   
+  border-radius: .5rem;
+
   height: 3.6rem;
   //width size
   ${({ buttonSize }) => handleButtonSize(buttonSize)};  
@@ -97,13 +98,13 @@ const Button = ({
 Button.propTypes = {
   buttonType: PropTypes.oneOf(['primary', 'secondary']),
   buttonSize: PropTypes.oneOf(['sm', 'md', 'lg']),
-  disabled: PropTypes.oneOf([
+  disabled: PropTypes.oneOfType([
     PropTypes.bool,
     PropTypes.object,
     PropTypes.func,
     PropTypes.number,
   ]),
-  children: PropTypes.oneOf([
+  children: PropTypes.oneOfType([
     PropTypes.element,
     PropTypes.node,
     PropTypes.string,

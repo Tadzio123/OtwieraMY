@@ -28,9 +28,11 @@ const GlobalTemplate = ({ children }) => (
 );
 
 GlobalTemplate.propTypes = {
-  children: PropTypes.oneOf([
+  children: PropTypes.oneOfType([
     PropTypes.node,
     PropTypes.element,
+    PropTypes.object,
+    PropTypes.func,
   ]).isRequired,
 };
 
