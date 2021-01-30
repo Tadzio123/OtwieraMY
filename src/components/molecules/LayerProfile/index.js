@@ -20,7 +20,7 @@ const LayerProfileContainer = styled.div`
 const LayerProfileInfo = styled.div`
     display: flex;
     flex-direction: column;
-    h1, p{
+    h4, p{
         margin: 0;
     }
 `;
