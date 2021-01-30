@@ -59,7 +59,7 @@ const Input = ({
 }) => (
   <StyledContainer>
     <StyledInput placeholder=" " error={error} id={id} {...rest} />
-    <StyledLabel htmlFor={id} {...rest}>{placeholder}</StyledLabel>
+    <StyledLabel htmlFor={id}>{placeholder}</StyledLabel>
   </StyledContainer>
 );
 
