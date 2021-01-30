@@ -20,7 +20,7 @@ const LayerProfileContainer = styled.div`
 const LayerProfileInfo = styled.div`
     display: flex;
     flex-direction: column;
-    h1, p{
+    h4, p{
         margin: 0;
     }
 `;
@@ -30,13 +30,13 @@ const LayerProfile = () => (
     <LayerProfileContainer>
       <Avatar />
       <LayerProfileInfo>
-        <Typography type="font-md-regular" component="h1">Antoni Kowalski</Typography>
+        <Typography type="font-md-regular" component="h4">Antoni Kowalski</Typography>
         <Typography type="font-sm-light" component="p">ul. Konieczna 12, 93-356 Łódź</Typography>
         <Typography type="font-sm-light" component="p">501 993 481</Typography>
         <Typography type="font-sm-light" component="p">antoni.kowalski@prawnik.pl</Typography>
       </LayerProfileInfo>
-      <Icon name="pencil" color="green" />
-      <Icon name="union" color="red" />
+      <Icon name="pencil" color="yellow" width="2rem" height="2rem" />
+      <Icon name="union" color="red" width="2rem" height="2rem" />
     </LayerProfileContainer>
   </>
 );
