@@ -33,8 +33,6 @@ const handleIconColor = (color) => {
 };
 
 const StyledIcon = styled.div`
-  align-self: flex-start;
-  margin: 1.5rem 0 0 0;
   svg path {
     ${({ color }) => handleIconColor(color)};
   }
