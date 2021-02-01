@@ -1,12 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
-import PropTypes from 'prop-types';
 
 const StyledAvatar = styled.div`
   width: 5.6rem;
   height: 5.6rem;
   border-radius: 50%;
-  background: url(assets/img/avatar.png) 0 0 no-repeat;
+  background: url('assets/img/avatar.png') 0 0 no-repeat;
   background-size: 100%;
 `;
 

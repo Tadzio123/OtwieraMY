@@ -8,10 +8,6 @@ const handleButtonSize = (buttonSize) => {
       return css`
         width: 2.5rem;
         height: 2.5rem;
-        
-        & > img{
-          
-        }
       `;
     case 'md':
       return css`
@@ -27,19 +23,34 @@ const handleButtonSize = (buttonSize) => {
 };
 
 const StyledButton = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
   border-radius: 50%;
   background-color: ${({ theme }) => theme.colorWhite};
+  filter: drop-shadow(0px 2px 3px rgba(0, 0, 0, 0.2));
+  
   ${({ buttonSize }) => handleButtonSize(buttonSize)}
 `;
 
 const CircleButton = ({
-  buttonSize, ...rest
+  buttonSize, children, ...rest
 }) => (
-  <StyledButton buttonSize={buttonSize} {...rest} />
+  <StyledButton buttonSize={buttonSize} {...rest}>
+    {children}
+  </StyledButton>
 );
 
 CircleButton.propTypes = {
   buttonSize: PropTypes.oneOf(['sm', 'md']),
+  children: PropTypes.oneOfType([
+    PropTypes.node,
+    PropTypes.element,
+    PropTypes.object,
+    PropTypes.func,
+  ]).isRequired,
 };
 
 CircleButton.defaultProps = {
