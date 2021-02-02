@@ -98,6 +98,7 @@ const LoginPage = () => (
           <Form>
             <InputsContainer>
               <Field
+                id="login"
                 type="text"
                 name="user"
                 placeholder="Login"
@@ -105,6 +106,7 @@ const LoginPage = () => (
                 as={Input}
               />
               <Field
+                id="password"
                 type="password"
                 name="password"
                 placeholder="Hasło"
