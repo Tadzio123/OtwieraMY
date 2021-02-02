@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
-import PropTypes from 'prop-types';
 import Icon from 'components/atoms/Icon';
 
 const Container = styled.div`
@@ -11,7 +10,7 @@ const StyledDropdownButton = styled.button`
     width: 8.9rem;
     height: 4.8rem;
     font-size: 1.4rem;
-    border: 0.1rem solid ${({ theme }) => theme.colorBlack};
+    border: 0.1rem solid ${({ isOpen, theme }) => (isOpen ? theme.colorPrimary : theme.colorBlack)};
     border-radius: 0.5rem;
     background: ${({ theme }) => theme.colorWhite};
     display: flex;
@@ -19,8 +18,17 @@ const StyledDropdownButton = styled.button`
     align-items: center;
     outline: none;
     cursor: pointer;
+    color: ${({ isOpen, theme }) => (isOpen ? theme.colorPrimary : theme.colorBlack)};
     &:hover {
         background: ${({ theme }) => theme.colorGray10};
+    }
+
+    svg {
+      transform: ${({ isOpen }) => (isOpen ? 'rotate(180deg)' : 'rotate(0deg)')};
+      ${'' /* Change svg color */}
+      path {
+        fill: ${({ isOpen, theme }) => (isOpen ? theme.colorPrimary : theme.colorBlack)};
+      }
     }
 `;
 
@@ -66,7 +74,7 @@ const Dropdown = () => {
 
   return (
     <Container>
-      <StyledDropdownButton onClick={handleButtonClick}>
+      <StyledDropdownButton onClick={handleButtonClick} isOpen={open}>
         +
         {value}
         km

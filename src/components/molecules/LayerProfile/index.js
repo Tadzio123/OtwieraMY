@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import PropTypes from 'prop-types';
 import Avatar from 'components/atoms/Avatar';
 import Typography from 'components/atoms/Typography';
 // import CircleButton from 'components/atoms/CircleButton';
