@@ -7,6 +7,7 @@ import {
 import * as Yup from 'yup';
 import Input from 'components/atoms/Input';
 import Button from 'components/atoms/Button';
+import Modal from 'components/atoms/Modal';
 import { Link } from 'react-router-dom';
 import handleTextType from 'utils/handleTextType';
 import routes from 'utils/routes';
@@ -91,6 +92,7 @@ const LoginPage = () => (
     <Container>
       <LogoContainer>
         <Logo />
+        <Modal />
       </LogoContainer>
       {/* eslint-disable-next-line max-len */}
       <Formik initialValues={initialValues} onSubmit={onSubmit} validateOnChange validationSchema={validationSchema}>
