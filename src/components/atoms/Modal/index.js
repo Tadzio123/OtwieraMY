@@ -1,14 +1,15 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 const StyledContainer = styled.div`
   position: fixed;
   top: 15%;
   left: 15%;
-  width: 0%;
+  width: ${({ isOpen }) => (isOpen ? '70%' : '0%')};
   height: 70vh;
   z-index: 99999;
-  opacity: 0%;
+  opacity: ${({ isOpen }) => (isOpen ? '100%' : '0%')};
   transition: .5s;
 `;
 
@@ -43,27 +44,15 @@ const ModalContentWrapper = styled.div`
   height: 100%;
 `;
 
-const Modal = () => {
+const Modal = ({ isOpen, setOpen }) => {
   const buttonText = 'Close';
 
-  const id = `${Math.random().toString(36).substring(7)}_Modal`;
-
-  useEffect(() => {
-    const modal = document.getElementById(id);
-
-    modal.style.opacity = '100%';
-    modal.style.width = '70%';
-  });
-
   const closeHaldner = () => {
-    const modal = document.getElementById(id);
-
-    modal.style.opacity = 0;
-    modal.style.width = 0;
+    setOpen(false);
   };
 
   return (
-    <StyledContainer id={id}>
+    <StyledContainer isOpen={isOpen}>
       <ModalContentWrapper>
         <ModalContent>
           ABC
@@ -75,6 +64,11 @@ const Modal = () => {
       </ModalContentWrapper>
     </StyledContainer>
   );
+};
+
+Modal.propTypes = {
+  isOpen: PropTypes.bool.isRequired,
+  setOpen: PropTypes.func.isRequired,
 };
 
 export default Modal;
