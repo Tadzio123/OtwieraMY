@@ -95,7 +95,11 @@ const LoginPage = () => {
       <Container>
         <LogoContainer>
           <Logo />
-          <Modal isOpen={isModalOpen} setOpen={setModalOpen} />
+          <Modal isOpen={isModalOpen} setOpen={setModalOpen} title="Modal">
+            <div type="content">
+              This is my modal content.
+            </div>
+          </Modal>
         </LogoContainer>
         {/* eslint-disable-next-line max-len */}
         <Formik initialValues={initialValues} onSubmit={onSubmit} validateOnChange validationSchema={validationSchema}>

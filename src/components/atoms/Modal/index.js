@@ -1,41 +1,43 @@
 import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
+import Icon from 'components/atoms/Icon';
+import handleTextType from 'utils/handleTextType';
 
 const StyledContainer = styled.div`
   position: fixed;
-  top: 15%;
-  left: 15%;
-  width: ${({ isOpen }) => (isOpen ? '70%' : '0%')};
-  height: 70vh;
+  top: ${({ isOpen }) => (isOpen ? '0%' : '-100%')};
+  left: 0%;
+  width: 100%;
+  height: 100vh;
   z-index: 99999;
-  opacity: ${({ isOpen }) => (isOpen ? '100%' : '0%')};
+  opacity: 100%;
   transition: .5s;
 `;
 
 const ModalContent = styled.div`
   color: black;
   font-size: 40px;
+  margin: auto;
+  top: ${({ height }) => `${(100 - height) / 2}%`};
+  left: ${({ width }) => `${(100 - width) / 2}%`};;
+  width: ${({ width }) => `${width}%`};
+  min-height: ${({ height }) => `${height}%`};
+  z-index: 100;
   position: absolute;
-  top: 10%;
-  left: 0%;
-  padding: 3%
+  background-color: white;
+  border-radius: 10px;
+  padding: 1%;
+  ${() => handleTextType('font-sm-light')};
+  color: ${({ theme }) => theme.colorGray40}
 `;
 
 const ModalBackground = styled.div`
-  background-color: ${({ theme }) => theme.colorPrimary};
-  opacity: 40%;
-  height: 90%;
+  background-color: white;
+  opacity: 20%;
+  height: 100%;
   width: 100%;
-`;
-
-const ModalToolbar = styled.div`
-  background-color: ${({ theme }) => theme.colorGray40};
-  opacity: 40%;
-  height: 10%;
-  width: 100%;
-  text-align: left;
-  padding: 1% 3%;
+  z-index: 150;
 `;
 
 const ModalContentWrapper = styled.div`
@@ -44,22 +46,62 @@ const ModalContentWrapper = styled.div`
   height: 100%;
 `;
 
-const Modal = ({ isOpen, setOpen }) => {
-  const buttonText = 'Close';
+const CloseBtn = styled.button`
+  background: none;
+  border: none;
+  outline: unset;
+`;
 
-  const closeHaldner = () => {
+const Modal = ({
+  isOpen,
+  setOpen,
+  title,
+  children,
+  width,
+  height,
+}) => {
+  const closeHandler = () => {
     setOpen(false);
   };
+
+  const style = { width: '100%' };
+  const closeButtonContainerStyle = { ...style, textAlign: 'right' };
+  const titleContainerStyle = {
+    ...style,
+    textAlign: 'left',
+    padding: '2%',
+    paddingBottom: '1%',
+    borderWidth: '1px',
+    borderColor: 'gray',
+    borderStyle: 'none none solid none',
+    fontSize: '3rem',
+    margin: '1%',
+  };
+  const contentContainerStyle = { ...style, textAlign: 'left', padding: '1%' };
+
+  let contentSlot;
+  let titleSlot;
+
+  if (Array.isArray(children)) {
+    contentSlot = children.find((child) => child.props && child.props.type === 'content');
+    titleSlot = children.find((child) => child.props && child.props.type === 'title');
+  } else {
+    contentSlot = children;
+    titleSlot = null;
+  }
 
   return (
     <StyledContainer isOpen={isOpen}>
       <ModalContentWrapper>
-        <ModalContent>
-          ABC
+        <ModalContent width={width} height={height}>
+          <div style={closeButtonContainerStyle}>
+            <CloseBtn type="button" onClick={closeHandler}>
+              <Icon name="union" color="gray" height="1.5rem" />
+            </CloseBtn>
+          </div>
+          <div style={titleContainerStyle}>{titleSlot || title}</div>
+          <div style={contentContainerStyle}>{contentSlot}</div>
         </ModalContent>
-        <ModalToolbar>
-          <button type="button" onClick={closeHaldner}>{buttonText}</button>
-        </ModalToolbar>
         <ModalBackground />
       </ModalContentWrapper>
     </StyledContainer>
@@ -69,6 +111,18 @@ const Modal = ({ isOpen, setOpen }) => {
 Modal.propTypes = {
   isOpen: PropTypes.bool.isRequired,
   setOpen: PropTypes.func.isRequired,
+  title: PropTypes.string,
+  // eslint-disable-next-line react/forbid-prop-types
+  children: PropTypes.any,
+  width: PropTypes.number,
+  height: PropTypes.number,
+};
+
+Modal.defaultProps = {
+  title: 'Title',
+  children: null,
+  width: 70,
+  height: 70,
 };
 
 export default Modal;
