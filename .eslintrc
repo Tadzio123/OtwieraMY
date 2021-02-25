@@ -10,7 +10,8 @@
     "linebreak-style": "off",
     "react/jsx-props-no-spreading": "off",
     "max-len": "off",
-    "no-unused-vars": "warn"
+    "no-unused-vars": "warn",
+    "no-console": "off"
   },
   "settings": {
     "import/resolver": {

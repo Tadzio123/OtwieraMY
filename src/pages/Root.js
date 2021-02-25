@@ -11,6 +11,7 @@ import routes from 'utils/routes';
 import { theme } from 'theme/mainTheme';
 import { ThemeProvider } from 'styled-components';
 import { ThemeContext } from 'context/useThemeContext';
+import HomePageTemplate from 'template/HomePageTemplate';
 
 const Root = () => (
   <ThemeProvider theme={theme}>
@@ -19,7 +20,9 @@ const Root = () => (
         <BrowserRouter history={history}>
           <Switch>
             <Route exact path={routes.login} component={LoginPage} />
-            <Route exact path={routes.home} component={HomePage} />
+            <HomePageTemplate>
+              <Route exact path={routes.home} component={HomePage} />
+            </HomePageTemplate>
           </Switch>
         </BrowserRouter>
       </GlobalTemplate>

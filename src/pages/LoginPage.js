@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import Logo from 'components/atoms/Logo';
 import {
@@ -10,7 +10,9 @@ import Button from 'components/atoms/Button';
 import Modal from 'components/atoms/Modal';
 import { Link } from 'react-router-dom';
 import handleTextType from 'utils/handleTextType';
+import authService from 'services/account.service';
 import routes from 'utils/routes';
+import history from 'utils/history';
 
 const Overlay = styled.div`
   width: 100%;
@@ -72,8 +74,8 @@ const StyledLink = styled(Link)`
 `;
 
 const initialValues = {
-  user: '',
-  password: '',
+  user: 'root',
+  password: 'password123',
 };
 
 const validationSchema = Yup.object({
@@ -81,13 +83,20 @@ const validationSchema = Yup.object({
   password: Yup.string().required(),
 });
 
-const onSubmit = () => {
-
+const onSubmit = (values) => {
+  authService.login(values.user, values.password)
+    .then((status) => {
+      if (status === 200) {
+        history.push(routes.home);
+        window.location.reload(true);
+      }
+    });
 };
 
 const LoginPage = () => {
-  const [isModalOpen, setModalOpen] = useState(false);
-
+  useEffect(() => {
+    localStorage.getItem('authToken');
+  }, []);
   return (
     <>
       <Overlay />
@@ -95,11 +104,6 @@ const LoginPage = () => {
       <Container>
         <LogoContainer>
           <Logo />
-          <Modal isOpen={isModalOpen} setOpen={setModalOpen} title="Modal">
-            <div type="content">
-              This is my modal content.
-            </div>
-          </Modal>
         </LogoContainer>
         {/* eslint-disable-next-line max-len */}
         <Formik initialValues={initialValues} onSubmit={onSubmit} validateOnChange validationSchema={validationSchema}>
@@ -130,7 +134,6 @@ const LoginPage = () => {
           )}
         </Formik>
         <StyledLink to={routes.home}>Przejdź do widoku użytkownika</StyledLink>
-        <button type="button" onClick={() => setModalOpen(true)}>Show Test Modal</button>
       </Container>
     </>
   );
