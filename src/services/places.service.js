@@ -1,26 +1,8 @@
 import CONSTANTS from 'utils/constants';
 
-const getAllPlacesCoordinates = () => {
-  const table = [];
+const getAllPlacesCoordinates = () => fetch(`${CONSTANTS.API_URL}/places/coordinates`);
 
-  fetch(`${CONSTANTS.API_URL}/places/coordinates`)
-    .then((res) => res.json())
-    .then((json) => table.push(...json))
-    .catch((err) => err.state);
-
-  return table;
-};
-
-const getPlaceByCoordinate = (id) => {
-  const table = [];
-
-  fetch(`${CONSTANTS.API_URL}/places/${id}`)
-    .then((res) => res.json())
-    .then((json) => table.push(json))
-    .catch((err) => err.state);
-
-  return table;
-};
+const getPlaceByCoordinate = (id) => fetch(`${CONSTANTS.API_URL}/places/${id}`);
 
 const addPlace = (city, coordinateX, coordinateY, name, number, postalCode, street, authToken) => {
   const requestOptions = {
@@ -39,8 +21,6 @@ const addPlace = (city, coordinateX, coordinateY, name, number, postalCode, stre
       street,
     }),
   };
-
-  console.log(requestOptions);
 
   return fetch(`${CONSTANTS.API_URL}/places`, requestOptions);
 };
