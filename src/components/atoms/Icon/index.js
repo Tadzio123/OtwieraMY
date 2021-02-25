@@ -1,5 +1,5 @@
 import React from 'react';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { ReactComponent as PencilIcon } from 'assets/icons/edit.svg';
 import { ReactComponent as UnionIcon } from 'assets/icons/delete.svg';
