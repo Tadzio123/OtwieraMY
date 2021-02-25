@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import Logo from 'components/atoms/Logo';
 import {
@@ -7,6 +7,7 @@ import {
 import * as Yup from 'yup';
 import Input from 'components/atoms/Input';
 import Button from 'components/atoms/Button';
+import Modal from 'components/atoms/Modal';
 import { Link } from 'react-router-dom';
 import handleTextType from 'utils/handleTextType';
 import routes from 'utils/routes';
@@ -84,45 +85,55 @@ const onSubmit = () => {
 
 };
 
-const LoginPage = () => (
-  <>
-    <Overlay />
+const LoginPage = () => {
+  const [isModalOpen, setModalOpen] = useState(false);
 
-    <Container>
-      <LogoContainer>
-        <Logo />
-      </LogoContainer>
-      {/* eslint-disable-next-line max-len */}
-      <Formik initialValues={initialValues} onSubmit={onSubmit} validateOnChange validationSchema={validationSchema}>
-        {({ errors, touched, isValid }) => (
-          <Form>
-            <InputsContainer>
-              <Field
-                id="login"
-                type="text"
-                name="user"
-                placeholder="Login"
-                error={errors.user && touched.user}
-                as={Input}
-              />
-              <Field
-                id="password"
-                type="password"
-                name="password"
-                placeholder="Hasło"
-                error={errors.password && touched.password}
-                as={Input}
-              />
-            </InputsContainer>
-            <ButtonContainer>
-              <Button buttonSize="md" buttonType="primary" type="submit" disabled={!isValid}>Zaloguj się</Button>
-            </ButtonContainer>
-          </Form>
-        )}
-      </Formik>
-      <StyledLink to={routes.home}>Przejdź do widoku użytkownika</StyledLink>
-    </Container>
-  </>
-);
+  return (
+    <>
+      <Overlay />
+
+      <Container>
+        <LogoContainer>
+          <Logo />
+          <Modal isOpen={isModalOpen} setOpen={setModalOpen} title="Modal">
+            <div type="content">
+              This is my modal content.
+            </div>
+          </Modal>
+        </LogoContainer>
+        {/* eslint-disable-next-line max-len */}
+        <Formik initialValues={initialValues} onSubmit={onSubmit} validateOnChange validationSchema={validationSchema}>
+          {({ errors, touched, isValid }) => (
+            <Form>
+              <InputsContainer>
+                <Field
+                  id="login"
+                  type="text"
+                  name="user"
+                  placeholder="Login"
+                  error={errors.user && touched.user}
+                  as={Input}
+                />
+                <Field
+                  id="password"
+                  type="password"
+                  name="password"
+                  placeholder="Hasło"
+                  error={errors.password && touched.password}
+                  as={Input}
+                />
+              </InputsContainer>
+              <ButtonContainer>
+                <Button buttonSize="md" buttonType="primary" type="submit" disabled={!isValid}>Zaloguj się</Button>
+              </ButtonContainer>
+            </Form>
+          )}
+        </Formik>
+        <StyledLink to={routes.home}>Przejdź do widoku użytkownika</StyledLink>
+        <button type="button" onClick={() => setModalOpen(true)}>Show Test Modal</button>
+      </Container>
+    </>
+  );
+};
 
 export default LoginPage;
