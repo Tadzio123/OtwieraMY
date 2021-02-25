@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import {
-  MapContainer, TileLayer, Marker, Popup,
+  MapContainer, TileLayer, Marker,
 } from 'react-leaflet';
 import styled from 'styled-components';
 import placeService from 'services/places.service';
@@ -27,7 +27,7 @@ const Map = () => {
     <StyledMapContainer center={mapDefaultPosition} zoom={13} scrollWheelZoom={false}>
       <TileLayer
         attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-        url="https://api.maptiler.com/maps/voyager/256/{z}/{x}/{y}.png?key=ABxrBA7sOVSSwxg7OTjT"
+        url="https://api.maptiler.com/maps/bright/{z}/{x}/{y}.png?key=ABxrBA7sOVSSwxg7OTjT"
       />
       {
         coordinates.forEach(({ id, coordinateX, coordinateY }) => <Marker position={[coordinateY, coordinateX]} />)
