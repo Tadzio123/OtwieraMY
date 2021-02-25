@@ -33,6 +33,7 @@ const StyledIcon = styled.div`
   svg {
     height: ${({ height }) => height};
     width: ${({ width }) => width};
+    transition: .2s;
   }
   svg path {
     fill: ${({ color }) => color};
