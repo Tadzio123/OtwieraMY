@@ -7,7 +7,7 @@ import handleTextType from 'utils/handleTextType';
 const StyledContainer = styled.div`
   position: fixed;
   top: ${({ isOpen }) => (isOpen ? '0%' : '-100%')};
-  left: 0%;
+  left: 0;
   width: 100%;
   height: 100vh;
   z-index: 99999;
@@ -17,7 +17,7 @@ const StyledContainer = styled.div`
 
 const ModalContent = styled.div`
   color: black;
-  font-size: 40px;
+  font-size: 4rem;
   margin: auto;
   top: ${({ height }) => `${(100 - height) / 2}%`};
   left: ${({ width }) => `${(100 - width) / 2}%`};;
@@ -26,7 +26,7 @@ const ModalContent = styled.div`
   z-index: 100;
   position: absolute;
   background-color: white;
-  border-radius: 10px;
+  border-radius: 1rem;
   padding: 1%;
   ${() => handleTextType('font-sm-light')};
   color: ${({ theme }) => theme.colorGray40}
