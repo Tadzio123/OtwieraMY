@@ -5,6 +5,7 @@ export const theme = {
   colorSuccess: '#34A931',
   colorDanger: '#DC004E',
   colorDangerDark: '#BC0043',
+  colorAlert: '#F3DC07',
   colorBlack: '#000000',
   colorWhite: '#FFFFFF',
   colorGray10: '#F5F5F5',
