@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import {
-  MapContainer, TileLayer, Marker, Popup,
+  MapContainer, TileLayer, Marker,
 } from 'react-leaflet';
 import styled from 'styled-components';
 import placeService from 'services/places.service';
 import Markers from 'components/molecules/Markers';
-import StyledPopup from '../../molecules/Popup';
+import StyledPopup from 'components/molecules/Popup';
+import Typography from 'components/atoms/Typography';
 
 const StyledMapContainer = styled(MapContainer)`
   position: absolute;
@@ -85,7 +86,7 @@ class Map extends Component {
               });
             }}
           >
-            <h1>{activeMarkerData.city}</h1>
+            <Typography component="h4" type="font-sm-regular">{activeMarkerData.city}</Typography>
           </StyledPopup>
         )}
 
