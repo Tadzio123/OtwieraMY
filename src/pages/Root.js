@@ -4,7 +4,7 @@ import GlobalTemplate from 'template/GlobalTemplate';
 import LoginPage from 'pages/LoginPage';
 import HomePage from 'pages/HomePage';
 
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import { Switch, Route, Router } from 'react-router-dom';
 import history from 'utils/history';
 import routes from 'utils/routes';
 
@@ -17,14 +17,14 @@ const Root = () => (
   <ThemeProvider theme={theme}>
     <ThemeContext.Provider value={theme}>
       <GlobalTemplate>
-        <BrowserRouter history={history}>
+        <Router history={history}>
           <Switch>
             <Route exact path={routes.login} component={LoginPage} />
             <HomePageTemplate>
               <Route exact path={routes.home} component={HomePage} />
             </HomePageTemplate>
           </Switch>
-        </BrowserRouter>
+        </Router>
       </GlobalTemplate>
     </ThemeContext.Provider>
   </ThemeProvider>
