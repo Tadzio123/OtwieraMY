@@ -1,6 +1,6 @@
 import React from 'react';
 import Map from 'components/organisms/Map';
-import Alert from 'components/molecules/Alerts';
+import { withRouter } from 'react-router-dom';
 
 const HomePage = () => (
   <>
@@ -9,4 +9,4 @@ const HomePage = () => (
   </>
 );
 
-export default HomePage;
+export default withRouter(HomePage);

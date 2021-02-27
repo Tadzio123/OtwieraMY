@@ -7,7 +7,7 @@ import {
 import * as Yup from 'yup';
 import Input from 'components/atoms/Input';
 import Button from 'components/atoms/Button';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import handleTextType from 'utils/handleTextType';
 import authService from 'services/account.service';
 import routes from 'utils/routes';
@@ -138,4 +138,4 @@ const LoginPage = () => {
   );
 };
 
-export default LoginPage;
+export default withRouter(LoginPage);
