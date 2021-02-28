@@ -3,7 +3,10 @@ import Map from 'components/organisms/Map';
 import { withRouter } from 'react-router-dom';
 
 const HomePage = () => (
-  <Map />
+  <>
+    <Alert type="success" message="Nieznany błąd" />
+    <Map />
+  </>
 );
 
 export default withRouter(HomePage);
