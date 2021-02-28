@@ -86,7 +86,16 @@ class Map extends Component {
               });
             }}
           >
-            <Typography component="h4" type="font-sm-regular">{activeMarkerData.city}</Typography>
+            <Typography component="h4" type="font-md-regular">{activeMarkerData.name}</Typography>
+            <Typography component="p" type="font-sm-light">
+              {activeMarkerData.street}
+              {' '}
+              {activeMarkerData.number}
+              {', '}
+              {activeMarkerData.postalCode}
+              {' '}
+              {activeMarkerData.city}
+            </Typography>
           </StyledPopup>
         )}
 
