@@ -50,8 +50,9 @@ const handleIconType = (name) => {
 };
 
 const StyledIcon = styled.div`
-  align-self: flex-start;
-  margin: 1.5rem 0 0 0;
+  display: inline-flex;
+  align-items:center;
+
   svg {
     height: ${({ height }) => height};
     width: ${({ width }) => width};
