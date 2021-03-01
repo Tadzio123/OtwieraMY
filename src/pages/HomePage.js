@@ -4,7 +4,6 @@ import { withRouter } from 'react-router-dom';
 
 const HomePage = () => (
   <>
-    <Alert type="success" message="Nieznany błąd" />
     <Map />
   </>
 );
