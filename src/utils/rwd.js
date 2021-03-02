@@ -1,9 +1,9 @@
 const breakPoints = {
-  sm: '414px',
+  mobile: '414px',
 };
 
 const breakPointSize = {
-  sm: `(max-width: ${breakPoints.sm})`,
+  mobile: `(max-width: ${breakPoints.mobile})`,
 };
 
 export default breakPointSize;

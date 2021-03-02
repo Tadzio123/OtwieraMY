@@ -3,11 +3,13 @@ import styled, { withTheme } from 'styled-components';
 import PropTypes from 'prop-types';
 import Icon from 'components/atoms/Icon';
 import Typography from 'components/atoms/Typography';
+import breakPointSize from 'utils/rwd';
 // import { useThemeContext } from 'context/useThemeContext';
 
 const StyledAlert = styled.div`
     width: 100%;
-    padding: 1rem 2rem;
+    height: 5.4rem;
+    padding: 2rem 3rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -19,7 +21,10 @@ const StyledAlert = styled.div`
       || (type === 'success' && theme.colorSuccess)
       || theme.colorDanger
 };
-
+    @media ${breakPointSize.mobile} {
+      height: 5.3rem;
+      padding: 2rem 2rem;
+    }
 `;
 
 const Alert = ({ type, message, theme }) => (
