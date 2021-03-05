@@ -1,1 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25"><defs><style>.a,.b{fill:#707070;}.b{fill-rule:evenodd;}</style></defs><g transform="translate(-1167 -1745)"><path class="a" d="M106,11H91V21h15Z" transform="translate(1081 1739)"/><path class="b" d="M88.5,6h20A2.507,2.507,0,0,1,111,8.5v15a2.507,2.507,0,0,1-2.5,2.5H91l-5,5V8.5A2.507,2.507,0,0,1,88.5,6ZM91,23.5h17.5V8.5h-20V26Z" transform="translate(1081 1739)"/></g></svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25">
+  <g id="chat" transform="translate(-391 -125)">
+    <path id="Path_3" data-name="Path 3" d="M300.368,49.37h20a2.507,2.507,0,0,1,2.5,2.5v15a2.507,2.507,0,0,1-2.5,2.5h-17.5l-5,5V51.87A2.507,2.507,0,0,1,300.368,49.37Zm2.5,17.5h16.083a1.417,1.417,0,0,0,1.417-1.418V53.287a1.416,1.416,0,0,0-1.417-1.417H301.786a1.417,1.417,0,0,0-1.418,1.417V69.37Z" transform="translate(93.132 75.63)" fill="#707070" fill-rule="evenodd"/>
+    <path id="Rectangle_1" data-name="Rectangle 1" d="M.777,0H14.246a.777.777,0,0,1,.777.777V9.223a.777.777,0,0,1-.777.777H0a0,0,0,0,1,0,0V.777A.777.777,0,0,1,.777,0Z" transform="translate(395.989 130)" fill="#707070"/>
+  </g>
+</svg>

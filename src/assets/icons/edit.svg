@@ -1,1 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="24.857" height="25.191" viewBox="0 0 24.857 25.191"><defs><style>.a{fill:#707070;}</style></defs><path class="a" d="M248.186,20.027l.05,5.207,5.207-.049,15.214-15.5L263.4,4.524Zm24.46-14.41a1.383,1.383,0,0,0-.019-1.958L269.347.441a1.383,1.383,0,0,0-1.958.018l-2.517,2.565,5.256,5.158Z" transform="translate(-248.186 -0.044)"/></svg>
+<svg id="edit" xmlns="http://www.w3.org/2000/svg" width="21.946" height="21.947" viewBox="0 0 21.946 21.947">
+  <path id="Path_7" data-name="Path 7" d="M545.114,259.931v-3.725l14.9-14.9,3.725,3.725-14.9,14.9Z" transform="translate(-545.114 -237.984)" fill="#707070"/>
+  <path id="Path_8" data-name="Path 8" d="M562.436,239.331l3.725,3.726,1.172-1.172a.977.977,0,0,0,0-1.381l-2.344-2.345a.977.977,0,0,0-1.381,0Z" transform="translate(-545.673 -237.873)" fill="#707070"/>
+</svg>
