@@ -1,52 +1,22 @@
 import React from 'react';
-import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import handleTextType from 'utils/handleTextType';
 
 // eslint-disable-next-line consistent-return
 const renderTypography = (type, component, color, children) => {
   if (component === 'h1') {
-    const StyledH1 = styled.h1`
-      ${() => handleTextType(type, color)};
-      color: ${color};  
-    `;
-    return <StyledH1>{children}</StyledH1>;
+    return <h1 className={type} style={{ color }}>{children}</h1>;
   } if (component === 'h2') {
-    const StyledH2 = styled.h2`
-      ${() => handleTextType(type, color)};
-      color: ${color};  
-    `;
-    return <StyledH2>{children}</StyledH2>;
+    return <h2 className={type} style={{ color }}>{children}</h2>;
   } if (component === 'h3') {
-    const StyledH3 = styled.h3`
-      ${() => handleTextType(type, color)};
-      color: ${color};        
-    `;
-    return <StyledH3>{children}</StyledH3>;
+    return <h3 className={type} style={{ color }}>{children}</h3>;
   } if (component === 'h4') {
-    const StyledH4 = styled.h4`
-      ${() => handleTextType(type, color)};
-      color: ${color};      
-    `;
-    return <StyledH4>{children}</StyledH4>;
+    return <h4 className={type} style={{ color }}>{children}</h4>;
   } if (component === 'h5') {
-    const StyledH5 = styled.h5`
-      ${() => handleTextType(type, color)};
-      color: ${color};      
-    `;
-    return <StyledH5>{children}</StyledH5>;
+    return <h5 className={type} style={{ color }}>{children}</h5>;
   } if (component === 'h6') {
-    const StyledH6 = styled.h6`
-      ${() => handleTextType(type, color)};
-      color: ${color};      
-    `;
-    return <StyledH6>{children}</StyledH6>;
+    return <h6 className={type} style={{ color }}>{children}</h6>;
   } if (component === 'p') {
-    const StyledParagraph = styled.p`
-      ${() => handleTextType(type, color)};
-      color: ${color};      
-    `;
-    return <StyledParagraph>{children}</StyledParagraph>;
+    return <p className={type} style={{ color }}>{children}</p>;
   }
 };
 

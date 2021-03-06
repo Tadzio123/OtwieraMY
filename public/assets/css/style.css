@@ -1,0 +1,43 @@
+.font-sm-light{
+    font-weight: 300;
+    font-size: 1.4rem;
+    line-height: 1.6rem;
+}
+.font-sm-bolt{
+    font-weight: 500;
+    font-size: 1.4rem;
+    line-height: 1.6rem;
+    letter-spacing: 0.04em;
+}
+.font-sm-light-underline{
+    font-weight: 300;
+    font-size: 1.4rem;
+    text-decoration-line: underline;
+}
+.font-sm-regular{
+    font-style: normal;
+    font-weight: normal;
+    font-size: 1.4rem;
+    line-height: 1.6rem;
+    letter-spacing: 0.03em;
+}
+.font-md-regular{
+    font-weight: normal;
+    font-size: 1.8rem;
+    line-height: 2.1rem;
+    letter-spacing: 0.03em;
+}
+.font-md-light{
+    font-style: normal;
+    font-weight: 300;
+    font-size: 1.8rem;
+    line-height: 2.1rem;
+}
+.font-lg-medium{
+    font-style: normal;
+    font-weight: 500;
+    font-size: 1.8rem;
+    line-height: 2.1rem;
+    letter-spacing: 0.03em;
+}
+
