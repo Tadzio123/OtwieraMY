@@ -1,16 +1,18 @@
 import CONSTANTS from 'utils/constants';
 
-const userLogin = () => ({
+export const login = () => ({
   type: CONSTANTS.USER_LOGIN,
 });
 
-const userLogout = () => ({
+export const logout = () => ({
   type: CONSTANTS.USER_LOGOUT,
 });
 
+/*
 const userActions = {
   login: userLogin,
   logout: userLogout,
 };
 
 export default userActions;
+*/

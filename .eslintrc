@@ -12,7 +12,8 @@
     "max-len": "off",
     "no-unused-vars": "warn",
     "no-console": "off",
-    "import/no-unresolved": "off"
+    "import/no-unresolved": "off",
+    "no-underscore-dangle": "off",
   },
   "settings": {
     "import/resolver": {

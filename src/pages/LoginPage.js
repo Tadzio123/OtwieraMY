@@ -94,7 +94,10 @@ const onSubmit = (values) => {
 
 const LoginPage = () => {
   useEffect(() => {
-    localStorage.getItem('authToken');
+    if (localStorage.getItem('authToken')) {
+      history.push(routes.home);
+      window.location.reload(true);
+    }
   }, []);
   return (
     <>
@@ -104,7 +107,6 @@ const LoginPage = () => {
         <LogoContainer>
           <Logo />
         </LogoContainer>
-        {/* eslint-disable-next-line max-len */}
         <Formik initialValues={initialValues} onSubmit={onSubmit} validateOnChange validationSchema={validationSchema}>
           {({ errors, touched, isValid }) => (
             <Form>
