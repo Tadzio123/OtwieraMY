@@ -31,7 +31,6 @@ const StyledInput = styled.input`
     color: ${({ theme, error }) => (error ? theme.colorDanger : theme.colorGray40)};
   }
   
-
   &:focus,
   &:active {
     border: 1px solid ${({ theme, error }) => (error ? theme.colorDanger : theme.colorPrimary)};
