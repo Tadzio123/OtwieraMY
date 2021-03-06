@@ -5,7 +5,7 @@ import handleTextType from 'utils/handleTextType';
 
 const StyledContainer = styled.div`
   position: relative;
-  `;
+`;
 
 const StyledLabel = styled.label`
   padding: 3px;
