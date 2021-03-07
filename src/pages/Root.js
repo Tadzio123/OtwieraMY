@@ -11,23 +11,33 @@ import routes from 'utils/routes';
 import { theme } from 'theme/mainTheme';
 import { ThemeProvider } from 'styled-components';
 import { ThemeContext } from 'context/useThemeContext';
+import { transitions, positions, Provider as AlertProvider } from 'react-alert';
 import HomePageTemplate from 'template/HomePageTemplate';
+import Alert from 'components/molecules/Alert';
 import TestPage from './TestPage';
+
+const options = {
+  position: positions.TOP_CENTER,
+  transition: transitions.SCALE,
+  offset: '0',
+};
 
 const Root = () => (
   <ThemeProvider theme={theme}>
     <ThemeContext.Provider value={theme}>
-      <GlobalTemplate>
-        <Router history={history}>
-          <Switch>
-            <Route exact path={routes.login} component={LoginPage} />
-            <HomePageTemplate>
-              <Route exact path={routes.home} component={HomePage} />
-              <Route exact path="/test" component={TestPage} />
-            </HomePageTemplate>
-          </Switch>
-        </Router>
-      </GlobalTemplate>
+      <AlertProvider template={Alert} {...options}>
+        <GlobalTemplate>
+          <Router history={history}>
+            <Switch>
+              <Route exact path={routes.login} component={LoginPage} />
+              <HomePageTemplate>
+                <Route exact path={routes.home} component={HomePage} />
+                <Route exact path="/test" component={TestPage} />
+              </HomePageTemplate>
+            </Switch>
+          </Router>
+        </GlobalTemplate>
+      </AlertProvider>
     </ThemeContext.Provider>
   </ThemeProvider>
 );
