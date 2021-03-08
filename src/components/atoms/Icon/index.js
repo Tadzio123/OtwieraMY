@@ -66,7 +66,8 @@ const handleIconType = (name) => {
 
 const StyledIcon = styled.div`
   display: inline-flex;
-  align-items:center;
+  align-items: center;
+  cursor: ${({ cursorType }) => cursorType};
 
   svg {
     height: ${({ height }) => height};
@@ -79,10 +80,10 @@ const StyledIcon = styled.div`
 `;
 
 const Icon = ({
-  name, color, width, height,
+  name, color, width, height, cursorType, ...rest
 }) => (
   <>
-    <StyledIcon color={color} width={width} height={height}>
+    <StyledIcon color={color} width={width} height={height} cursorType={cursorType} {...rest}>
       {handleIconType(name)}
     </StyledIcon>
   </>
@@ -97,6 +98,7 @@ Icon.propTypes = {
   ]),
   width: PropTypes.string,
   height: PropTypes.string,
+  cursorType: PropTypes.oneOf(['default', 'pointer']),
 };
 
 Icon.defaultProps = {
@@ -104,6 +106,7 @@ Icon.defaultProps = {
   color: ({ theme }) => theme.colorBlack,
   width: '2rem',
   height: '2rem',
+  cursorType: 'default',
 };
 
 export default Icon;
