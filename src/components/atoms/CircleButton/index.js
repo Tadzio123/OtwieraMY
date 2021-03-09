@@ -24,27 +24,40 @@ const handleButtonSize = (buttonSize) => {
 
 const StyledButton = styled.div`
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
 
   border-radius: 50%;
   background-color: ${({ theme }) => theme.colorWhite};
   filter: drop-shadow(0px 2px 3px rgba(0, 0, 0, 0.2));
+  margin: ${({ buttonMargin }) => buttonMargin};
+  cursor: pointer;
   
   ${({ buttonSize }) => handleButtonSize(buttonSize)}
+
+  &:hover {
+    svg path{
+      fill: ${({ theme }) => theme.colorPrimary};
+    }
+  }
 `;
 
 const CircleButton = ({
-  buttonSize, children, ...rest
+  buttonSize, buttonMargin, children, ...rest
 }) => (
-  <StyledButton buttonSize={buttonSize} {...rest}>
+  <StyledButton buttonSize={buttonSize} buttonMargin={buttonMargin} {...rest}>
     {children}
   </StyledButton>
 );
 
 CircleButton.propTypes = {
   buttonSize: PropTypes.oneOf(['sm', 'md']),
+  buttonMargin: PropTypes.oneOfType([
+    PropTypes.node,
+    PropTypes.element,
+    PropTypes.object,
+    PropTypes.func,
+  ]).isRequired,
   children: PropTypes.oneOfType([
     PropTypes.node,
     PropTypes.element,
