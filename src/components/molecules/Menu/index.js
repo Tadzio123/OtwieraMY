@@ -72,7 +72,7 @@ const handleMenuType = (type) => {
     case 'AdminSelected':
       return <AdminPinSelectedMenu />;
     default:
-      return <AdminDefaultMenu />;
+      return <UserDefaultMenu />;
   }
 };
 

@@ -66,7 +66,7 @@ const Icon = ({
 );
 
 Icon.propTypes = {
-  name: PropTypes.oneOf(['cancel', 'chat', 'confirm', 'delete', 'pencil', 'exit', 'gps', 'markerPrimary', 'markerPrimaryActive', 'pin']),
+  name: PropTypes.oneOf(['cancel', 'chat', 'confirm', 'delete', 'pencil', 'exit', 'gps', 'markerPrimary', 'markerPrimaryActive', 'pin', 'edit']),
   color: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.object,

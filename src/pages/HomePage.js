@@ -1,13 +1,21 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Map from 'components/organisms/Map';
-import Menu from 'components/molecules/Menu';
 import { withRouter } from 'react-router-dom';
 
-const HomePage = () => (
-  <>
-    <Map />
-    <Menu />
-  </>
-);
+const HomePage = () => {
+  const [userLogged, setUserLogged] = useState(false);
+
+  useEffect(() => {
+    if (localStorage.getItem('authToken')) {
+      setUserLogged(true);
+    }
+  }, []);
+
+  return (
+    <>
+      <Map userLogged={userLogged} />
+    </>
+  );
+};
 
 export default withRouter(HomePage);

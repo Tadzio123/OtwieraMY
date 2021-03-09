@@ -7,6 +7,8 @@ import placeService from 'services/places.service';
 import Markers from 'components/molecules/Markers';
 import StyledPopup from 'components/molecules/Popup';
 import Typography from 'components/atoms/Typography';
+import Menu from 'components/molecules/Menu';
+import PropTypes from 'prop-types';
 
 const StyledMapContainer = styled(MapContainer)`
   position: absolute;
@@ -28,6 +30,7 @@ class Map extends Component {
     };
   }
 
+  // load markers when map is loading
   async componentDidMount() {
     await placeService
       .getAllPlacesCoordinates()
@@ -39,8 +42,13 @@ class Map extends Component {
   render() {
     const mapDefaultPosition = [51.919437, 19.145136];
 
-    const { coordinates, activeMarker, activeMarkerData } = this.state;
+    const {
+      coordinates, activeMarker, activeMarkerData,
+    } = this.state;
 
+    const { userLogged } = this.props;
+
+    // set icon to active marker
     const getMarkerIcon = (index) => {
       if (index === activeMarker) {
         return Markers.primaryActive;
@@ -48,6 +56,7 @@ class Map extends Component {
       return Markers.primary;
     };
 
+    // set marker active and get data from endpoint by marker id
     const setActiveMarker = async (id) => {
       this.setState({ activeMarker: id });
       await placeService.getPlaceByCoordinate(id)
@@ -55,25 +64,45 @@ class Map extends Component {
         .then((json) => this.setState({ activeMarkerData: json }));
     };
 
-    return (
-      <StyledMapContainer center={mapDefaultPosition} zoom={13} scrollWheelZoom zoomControl={false}>
-        <TileLayer
-          attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-          url="https://api.maptiler.com/maps/bright/{z}/{x}/{y}.png?key=ABxrBA7sOVSSwxg7OTjT"
-        />
-        {coordinates.map((place) => (
-          <Marker
-            key={place.id}
-            index={place.id}
-            position={[place.coordinateX, place.coordinateY]}
-            icon={getMarkerIcon(place.id)}
-            eventHandlers={{
-              click: () => setActiveMarker(place.id),
-            }}
-          />
-        ))}
+    const renderMenu = (userIsLogged, selectedMarker) => {
+      // check if admin is logged
+      if (userIsLogged === true) {
+        if (selectedMarker !== null) {
+          // open menu when marker is active (admin site)
+          return <Menu type="AdminSelected" />;
+        }
+        // default menu (admin)
+        return <Menu type="AdminDefault" />;
+      }
+      if (selectedMarker !== null) {
+        // open menu when marker is active (user site)
+        return <Menu type="UserSelected" />;
+      }
+      // default menu (user)
+      return <Menu type="UserDefault" />;
+    };
 
-        {activeMarkerData && (
+    return (
+      <>
+        {renderMenu(userLogged, activeMarker)}
+        <StyledMapContainer center={mapDefaultPosition} zoom={13} scrollWheelZoom zoomControl={false}>
+          <TileLayer
+            attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+            url="https://api.maptiler.com/maps/bright/{z}/{x}/{y}.png?key=ABxrBA7sOVSSwxg7OTjT"
+          />
+          {coordinates.map((place) => (
+            <Marker
+              key={place.id}
+              index={place.id}
+              position={[place.coordinateX, place.coordinateY]}
+              icon={getMarkerIcon(place.id)}
+              eventHandlers={{
+                click: () => setActiveMarker(place.id),
+              }}
+            />
+          ))}
+
+          {activeMarkerData && (
           <StyledPopup
             position={[
               activeMarkerData.coordinateX,
@@ -97,11 +126,16 @@ class Map extends Component {
               {activeMarkerData.city}
             </Typography>
           </StyledPopup>
-        )}
+          )}
 
-      </StyledMapContainer>
+        </StyledMapContainer>
+      </>
     );
   }
 }
+
+Map.propTypes = {
+  userLogged: PropTypes.bool.isRequired,
+};
 
 export default Map;
