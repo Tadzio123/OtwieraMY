@@ -1,6 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="23.5" height="26.997" viewBox="0 0 23.5 26.997">
-  <g id="exit" transform="translate(1.25 1.25)">
-    <path id="Path_9" data-name="Path 9" d="M219.161,195.6a10.5,10.5,0,1,1-8,0" transform="translate(-204.661 -191.146)" fill="none" stroke="#707070" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"/>
-    <line id="Line_5" data-name="Line 5" y2="6.225" transform="translate(10.472)" fill="none" stroke="#707070" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"/>
+<svg xmlns="http://www.w3.org/2000/svg" width="20.922" height="24" viewBox="0 0 20.922 24">
+  <g id="exit" transform="translate(-570.049 -144.407)">
+    <path id="Path_36" data-name="Path 36" d="M580.51,168.931a10.388,10.388,0,0,1-10.461-10.289,10.261,10.261,0,0,1,6.474-9.515,1.23,1.23,0,0,1,1.6.653,1.2,1.2,0,0,1-.663,1.57,7.862,7.862,0,0,0-4.963,7.292,8.018,8.018,0,0,0,16.034,0,7.863,7.863,0,0,0-4.963-7.292,1.2,1.2,0,0,1-.664-1.57,1.231,1.231,0,0,1,1.6-.653,10.261,10.261,0,0,1,6.475,9.515A10.388,10.388,0,0,1,580.51,168.931Z" transform="translate(0 -0.524)" fill="#5e5e5e"/>
+    <path id="Path_37" data-name="Path 37" d="M582.687,152.81a1.331,1.331,0,0,1-1.33-1.33v-5.743a1.33,1.33,0,1,1,2.66,0v5.743A1.33,1.33,0,0,1,582.687,152.81Z" transform="translate(-2.202)" fill="#5e5e5e"/>
   </g>
 </svg>

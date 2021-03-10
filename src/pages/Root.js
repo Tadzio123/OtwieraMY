@@ -14,7 +14,9 @@ import { ThemeContext } from 'context/useThemeContext';
 import { transitions, positions, Provider as AlertProvider } from 'react-alert';
 import HomePageTemplate from 'template/HomePageTemplate';
 import Alert from 'components/molecules/Alert';
-import TestPage from './TestPage';
+import { Provider } from 'react-redux';
+import store from '_helpers/store';
+import TestPage from 'pages/TestPage';
 
 const options = {
   position: positions.TOP_CENTER,
@@ -23,23 +25,25 @@ const options = {
 };
 
 const Root = () => (
-  <ThemeProvider theme={theme}>
-    <ThemeContext.Provider value={theme}>
-      <AlertProvider template={Alert} {...options}>
-        <GlobalTemplate>
-          <Router history={history}>
-            <Switch>
-              <Route exact path={routes.login} component={LoginPage} />
-              <HomePageTemplate>
-                <Route exact path={routes.home} component={HomePage} />
-                <Route exact path="/test" component={TestPage} />
-              </HomePageTemplate>
-            </Switch>
-          </Router>
-        </GlobalTemplate>
-      </AlertProvider>
-    </ThemeContext.Provider>
-  </ThemeProvider>
+  <Provider store={store}>
+    <ThemeProvider theme={theme}>
+      <ThemeContext.Provider value={theme}>
+        <AlertProvider template={Alert} {...options}>
+          <GlobalTemplate>
+            <Router history={history}>
+              <Switch>
+                <Route exact path={routes.login} component={LoginPage} />
+                <HomePageTemplate>
+                  <Route exact path={routes.home} component={HomePage} />
+                  <Route exact path="/test" component={TestPage} />
+                </HomePageTemplate>
+              </Switch>
+            </Router>
+          </GlobalTemplate>
+        </AlertProvider>
+      </ThemeContext.Provider>
+    </ThemeProvider>
+  </Provider>
 );
 
 export default Root;
