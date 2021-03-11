@@ -9,55 +9,60 @@ const StyledMenu = styled.div`
   bottom: 0;
   right: 0;
   z-index: 99;
+  margin-right: 2.5rem;
+`;
+
+const StyledCircleButton = styled(CircleButton)`
+  margin-bottom: 3rem; 
 `;
 
 const UserDefaultMenu = () => (
   <>
-    <CircleButton id="button-chat" buttonSize="md" buttonMargin="0 2.5rem 3rem 0">
+    <StyledCircleButton id="button-chat" buttonSize="md">
       <Icon name="chat" color="grey" width="2.5rem" height="2.5rem" />
-    </CircleButton>
-    <CircleButton id="button-gps" buttonSize="md" buttonMargin="0 2.5rem 3rem 0">
+    </StyledCircleButton>
+    <StyledCircleButton id="button-gps" buttonSize="md" buttonMargin="0 2.5rem 3rem 0">
       <Icon name="gps" color="grey" width="2.5rem" height="2.5rem" />
-    </CircleButton>
+    </StyledCircleButton>
   </>
 );
 
 const UserPinSelectedMenu = () => (
   <>
-    <CircleButton id="button-cancel" buttonSize="md" buttonMargin="0 2.5rem 3rem 0">
+    <StyledCircleButton id="button-cancel" buttonSize="md" buttonMargin="0 2.5rem 3rem 0">
       <Icon name="cancel" color="grey" width="2.5rem" height="2.5rem" />
-    </CircleButton>
-    <CircleButton id="button-gps" buttonSize="md" buttonMargin="0 2.5rem 3rem 0">
+    </StyledCircleButton>
+    <StyledCircleButton id="button-gps" buttonSize="md" buttonMargin="0 2.5rem 3rem 0">
       <Icon name="gps" color="grey" width="2.5rem" height="2.5rem" />
-    </CircleButton>
+    </StyledCircleButton>
   </>
 );
 
 const AdminDefaultMenu = () => (
   <>
-    <CircleButton id="button-pin" buttonSize="md" buttonMargin="0 2.5rem 3rem 0">
+    <StyledCircleButton id="button-pin" buttonSize="md" buttonMargin="0 2.5rem 3rem 0">
       <Icon name="pin" color="grey" width="2.5rem" height="2.5rem" />
-    </CircleButton>
-    <CircleButton id="button-exit" buttonSize="md" buttonMargin="0 2.5rem 3rem 0">
+    </StyledCircleButton>
+    <StyledCircleButton id="button-exit" buttonSize="md" buttonMargin="0 2.5rem 3rem 0">
       <Icon name="exit" color="grey" width="2.5rem" height="2.5rem" />
-    </CircleButton>
+    </StyledCircleButton>
   </>
 );
 
 const AdminPinSelectedMenu = () => (
   <>
-    <CircleButton id="button-cancel" buttonSize="md" buttonMargin="0 2.5rem 3rem 0">
+    <StyledCircleButton id="button-cancel" buttonSize="md" buttonMargin="0 2.5rem 3rem 0">
       <Icon name="cancel" color="grey" width="2.5rem" height="2.5rem" />
-    </CircleButton>
-    <CircleButton id="button-edit" buttonSize="md" buttonMargin="0 2.5rem 3rem 0">
+    </StyledCircleButton>
+    <StyledCircleButton id="button-edit" buttonSize="md" buttonMargin="0 2.5rem 3rem 0">
       <Icon name="edit" color="grey" width="2.5rem" height="2.5rem" />
-    </CircleButton>
-    <CircleButton id="button-delete" buttonSize="md" buttonMargin="0 2.5rem 3rem 0">
+    </StyledCircleButton>
+    <StyledCircleButton id="button-delete" buttonSize="md" buttonMargin="0 2.5rem 3rem 0">
       <Icon name="delete" color="grey" width="2.5rem" height="2.5rem" />
-    </CircleButton>
-    <CircleButton id="button-exit" buttonSize="md" buttonMargin="0 2.5rem 3rem 0">
+    </StyledCircleButton>
+    <StyledCircleButton id="button-exit" buttonSize="md" buttonMargin="0 2.5rem 3rem 0">
       <Icon name="exit" color="grey" width="2.5rem" height="2.5rem" />
-    </CircleButton>
+    </StyledCircleButton>
   </>
 );
 

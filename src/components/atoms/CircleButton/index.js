@@ -30,7 +30,6 @@ const StyledButton = styled.div`
   border-radius: 50%;
   background-color: ${({ theme }) => theme.colorWhite};
   filter: drop-shadow(0px 2px 3px rgba(0, 0, 0, 0.2));
-  margin: ${({ buttonMargin }) => buttonMargin};
   cursor: pointer;
   
   ${({ buttonSize }) => handleButtonSize(buttonSize)}
@@ -43,21 +42,15 @@ const StyledButton = styled.div`
 `;
 
 const CircleButton = ({
-  buttonSize, buttonMargin, children, ...rest
+  buttonSize, children, ...rest
 }) => (
-  <StyledButton buttonSize={buttonSize} buttonMargin={buttonMargin} {...rest}>
+  <StyledButton buttonSize={buttonSize} {...rest}>
     {children}
   </StyledButton>
 );
 
 CircleButton.propTypes = {
   buttonSize: PropTypes.oneOf(['sm', 'md']),
-  buttonMargin: PropTypes.oneOfType([
-    PropTypes.node,
-    PropTypes.element,
-    PropTypes.object,
-    PropTypes.func,
-  ]).isRequired,
   children: PropTypes.oneOfType([
     PropTypes.node,
     PropTypes.element,
