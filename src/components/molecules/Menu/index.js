@@ -21,7 +21,7 @@ const UserDefaultMenu = () => (
     <StyledCircleButton id="button-chat" buttonSize="md">
       <Icon name="chat" color="grey" width="2.5rem" height="2.5rem" />
     </StyledCircleButton>
-    <StyledCircleButton id="button-gps" buttonSize="md" buttonMargin="0 2.5rem 3rem 0">
+    <StyledCircleButton id="button-gps" buttonSize="md">
       <Icon name="gps" color="grey" width="2.5rem" height="2.5rem" />
     </StyledCircleButton>
   </>
@@ -29,10 +29,10 @@ const UserDefaultMenu = () => (
 
 const UserPinSelectedMenu = () => (
   <>
-    <StyledCircleButton id="button-cancel" buttonSize="md" buttonMargin="0 2.5rem 3rem 0">
+    <StyledCircleButton id="button-cancel" buttonSize="md">
       <Icon name="cancel" color="grey" width="2.5rem" height="2.5rem" />
     </StyledCircleButton>
-    <StyledCircleButton id="button-gps" buttonSize="md" buttonMargin="0 2.5rem 3rem 0">
+    <StyledCircleButton id="button-gps" buttonSize="md">
       <Icon name="gps" color="grey" width="2.5rem" height="2.5rem" />
     </StyledCircleButton>
   </>
@@ -40,10 +40,10 @@ const UserPinSelectedMenu = () => (
 
 const AdminDefaultMenu = () => (
   <>
-    <StyledCircleButton id="button-pin" buttonSize="md" buttonMargin="0 2.5rem 3rem 0">
+    <StyledCircleButton id="button-pin" buttonSize="md">
       <Icon name="pin" color="grey" width="2.5rem" height="2.5rem" />
     </StyledCircleButton>
-    <StyledCircleButton id="button-exit" buttonSize="md" buttonMargin="0 2.5rem 3rem 0">
+    <StyledCircleButton id="button-exit" buttonSize="md">
       <Icon name="exit" color="grey" width="2.5rem" height="2.5rem" />
     </StyledCircleButton>
   </>
@@ -51,16 +51,16 @@ const AdminDefaultMenu = () => (
 
 const AdminPinSelectedMenu = () => (
   <>
-    <StyledCircleButton id="button-cancel" buttonSize="md" buttonMargin="0 2.5rem 3rem 0">
+    <StyledCircleButton id="button-cancel" buttonSize="md">
       <Icon name="cancel" color="grey" width="2.5rem" height="2.5rem" />
     </StyledCircleButton>
-    <StyledCircleButton id="button-edit" buttonSize="md" buttonMargin="0 2.5rem 3rem 0">
+    <StyledCircleButton id="button-edit" buttonSize="md">
       <Icon name="edit" color="grey" width="2.5rem" height="2.5rem" />
     </StyledCircleButton>
-    <StyledCircleButton id="button-delete" buttonSize="md" buttonMargin="0 2.5rem 3rem 0">
+    <StyledCircleButton id="button-delete" buttonSize="md">
       <Icon name="delete" color="grey" width="2.5rem" height="2.5rem" />
     </StyledCircleButton>
-    <StyledCircleButton id="button-exit" buttonSize="md" buttonMargin="0 2.5rem 3rem 0">
+    <StyledCircleButton id="button-exit" buttonSize="md">
       <Icon name="exit" color="grey" width="2.5rem" height="2.5rem" />
     </StyledCircleButton>
   </>
