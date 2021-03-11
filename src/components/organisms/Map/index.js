@@ -7,8 +7,6 @@ import placeService from 'services/places.service';
 import Markers from 'components/molecules/Markers';
 import StyledPopup from 'components/molecules/Popup';
 import Typography from 'components/atoms/Typography';
-import Menu from 'components/molecules/Menu';
-import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import mapActions from 'actions/map.actions';
 
@@ -23,7 +21,7 @@ const StyledMapContainer = styled(MapContainer)`
 `;
 
 const Map = ({
-  userLogged, activeMarker, activeMarkerData, setActiveMarker, setActiveMarkerData,
+  activeMarker, activeMarkerData, setActiveMarker, setActiveMarkerData,
 }) => {
   const [coordinates, setCoordinates] = useState([]);
 
@@ -56,27 +54,8 @@ const Map = ({
       .then((json) => setActiveMarkerData(json));
   };
 
-  const renderMenu = (userIsLogged, selectedMarker) => {
-    // check if admin is logged
-    if (userIsLogged === true) {
-      if (selectedMarker !== null) {
-        // open menu when marker is active (admin site)
-        return <Menu type="AdminSelected" />;
-      }
-      // default menu (admin)
-      return <Menu type="AdminDefault" />;
-    }
-    if (selectedMarker !== null) {
-      // open menu when marker is active (user site)
-      return <Menu type="UserSelected" />;
-    }
-    // default menu (user)
-    return <Menu type="UserDefault" />;
-  };
-
   return (
     <>
-      {renderMenu(userLogged, activeMarker)}
       <StyledMapContainer center={mapDefaultPosition} zoom={13} scrollWheelZoom zoomControl={false}>
         <TileLayer
           attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
@@ -101,8 +80,8 @@ const Map = ({
             activeMarkerData.coordinateY,
           ]}
           onClose={() => {
-            setActiveMarker(null);
             setActiveMarkerData(null);
+            setActiveMarker(null);
           }}
         >
           <Typography component="h4" type="font-md-regular">{activeMarkerData.name}</Typography>
@@ -131,9 +110,5 @@ const mapDispatchToProps = (dispatch) => ({
   setActiveMarker: (id) => dispatch(mapActions.activeMarkerID(id)),
   setActiveMarkerData: (data) => dispatch(mapActions.activeMarkerData(data)),
 });
-
-Map.propTypes = {
-  userLogged: PropTypes.bool.isRequired,
-};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Map);
