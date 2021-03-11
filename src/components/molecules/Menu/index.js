@@ -16,76 +16,76 @@ const StyledCircleButton = styled(CircleButton)`
   margin-bottom: 3rem; 
 `;
 
-const UserDefaultMenu = () => (
+const UserDefaultMenu = ({ buttonChatClick, buttonGpsClick }) => (
   <>
-    <StyledCircleButton id="button-chat" buttonSize="md">
+    <StyledCircleButton id="button-chat" buttonSize="md" onClick={buttonChatClick}>
       <Icon name="chat" color="grey" width="2.5rem" height="2.5rem" />
     </StyledCircleButton>
-    <StyledCircleButton id="button-gps" buttonSize="md">
+    <StyledCircleButton id="button-gps" buttonSize="md" onClick={buttonGpsClick}>
       <Icon name="gps" color="grey" width="2.5rem" height="2.5rem" />
     </StyledCircleButton>
   </>
 );
 
-const UserPinSelectedMenu = () => (
+const UserPinSelectedMenu = ({ buttonGpsClick, buttonCancelClick }) => (
   <>
-    <StyledCircleButton id="button-cancel" buttonSize="md">
+    <StyledCircleButton id="button-cancel" buttonSize="md" onClick={buttonCancelClick}>
       <Icon name="cancel" color="grey" width="2.5rem" height="2.5rem" />
     </StyledCircleButton>
-    <StyledCircleButton id="button-gps" buttonSize="md">
+    <StyledCircleButton id="button-gps" buttonSize="md" onClick={buttonGpsClick}>
       <Icon name="gps" color="grey" width="2.5rem" height="2.5rem" />
     </StyledCircleButton>
   </>
 );
 
-const AdminDefaultMenu = () => (
+const AdminDefaultMenu = ({ buttonPinClick, buttonExitClick }) => (
   <>
-    <StyledCircleButton id="button-pin" buttonSize="md">
+    <StyledCircleButton id="button-pin" buttonSize="md" onClick={buttonPinClick}>
       <Icon name="pin" color="grey" width="2.5rem" height="2.5rem" />
     </StyledCircleButton>
-    <StyledCircleButton id="button-exit" buttonSize="md">
+    <StyledCircleButton id="button-exit" buttonSize="md" onClick={buttonExitClick}>
       <Icon name="exit" color="grey" width="2.5rem" height="2.5rem" />
     </StyledCircleButton>
   </>
 );
 
-const AdminPinSelectedMenu = () => (
+const AdminPinSelectedMenu = ({
+  buttonCancelClick, buttonEditClick, buttonDeleteClick, buttonExitClick,
+}) => (
   <>
-    <StyledCircleButton id="button-cancel" buttonSize="md">
+    <StyledCircleButton id="button-cancel" buttonSize="md" onClick={buttonCancelClick}>
       <Icon name="cancel" color="grey" width="2.5rem" height="2.5rem" />
     </StyledCircleButton>
-    <StyledCircleButton id="button-edit" buttonSize="md">
+    <StyledCircleButton id="button-edit" buttonSize="md" onClick={buttonEditClick}>
       <Icon name="edit" color="grey" width="2.5rem" height="2.5rem" />
     </StyledCircleButton>
-    <StyledCircleButton id="button-delete" buttonSize="md">
+    <StyledCircleButton id="button-delete" buttonSize="md" onClick={buttonDeleteClick}>
       <Icon name="delete" color="grey" width="2.5rem" height="2.5rem" />
     </StyledCircleButton>
-    <StyledCircleButton id="button-exit" buttonSize="md">
+    <StyledCircleButton id="button-exit" buttonSize="md" onClick={buttonExitClick}>
       <Icon name="exit" color="grey" width="2.5rem" height="2.5rem" />
     </StyledCircleButton>
   </>
 );
 
-const handleMenuType = (type) => {
-  switch (type) {
-    case 'UserDefault':
-      return <UserDefaultMenu />;
-    case 'UserSelected':
-      return <UserPinSelectedMenu />;
-    case 'AdminDefault':
-      return <AdminDefaultMenu />;
-    case 'AdminSelected':
-      return <AdminPinSelectedMenu />;
-    default:
-      return <UserDefaultMenu />;
+const handleMenuType = (type, buttonChatClick, buttonGpsClick, buttonCancelClick, buttonPinClick, buttonDeleteClick, buttonExitClick, buttonEditClick) => {
+  if (type === 'UserDefault') {
+    return <UserDefaultMenu buttonChatClick={buttonChatClick} buttonGpsClick={buttonGpsClick} />;
+  } if (type === 'UserSelected') {
+    return <UserPinSelectedMenu buttonGpsClick={buttonGpsClick} buttonCancelClick={buttonCancelClick} />;
+  } if (type === 'AdminDefault') {
+    return <AdminDefaultMenu buttonPinClick={buttonPinClick} buttonExitClick={buttonExitClick} />;
+  } if (type === 'AdminSelected') {
+    return <AdminPinSelectedMenu buttonCancelClick={buttonCancelClick} buttonEditClick={buttonEditClick} buttonDeleteClick={buttonDeleteClick} buttonExitClick={buttonEditClick} />;
   }
+  return <UserDefaultMenu />;
 };
 
 const Menu = ({
-  type,
+  type, buttonChatClick, buttonGpsClick, buttonCancelClick, buttonPinClick, buttonDeleteClick, buttonExitClick, buttonEditClick,
 }) => (
   <StyledMenu>
-    {handleMenuType(type)}
+    {handleMenuType(type, buttonChatClick, buttonGpsClick, buttonCancelClick, buttonPinClick, buttonDeleteClick, buttonExitClick, buttonEditClick)}
   </StyledMenu>
 );
 
