@@ -1,18 +1,49 @@
 import React, { useEffect, useState } from 'react';
 import Map from 'components/organisms/Map';
-import { withRouter } from 'react-router-dom';
 import Menu from 'components/molecules/Menu';
+import { withRouter } from 'react-router-dom';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
+import { useAlert } from 'react-alert';
+import accountService from 'services/account.service';
+import placeService from 'services/places.service';
+import authToken from '_helpers/authToken';
 
 const HomePage = ({ activeMarker }) => {
   const [userLogged, setUserLogged] = useState(false);
+  const alert = useAlert();
 
   useEffect(() => {
     if (localStorage.getItem('authToken')) {
       setUserLogged(true);
     }
   }, []);
+
+  const closePopup = () => {
+    document.querySelector('.leaflet-popup-close-button').click();
+  };
+
+  const logoutUser = () => {
+    accountService.logout(authToken)
+      .then(() => {
+        alert.success('Zostałeś wylogowany');
+        window.location.reload(true);
+      })
+      .catch(() => {
+        alert.error('Coś poszło nie tak');
+      });
+  };
+
+  const deleteSelectedMarker = () => {
+    placeService.deletePlace(activeMarker, authToken)
+      .then(() => {
+        alert.success('Lokal został usunięty pomyślnie');
+        window.location.reload(true);
+      })
+      .catch(() => {
+        alert.error('Coś poszło nie tak');
+      });
+  };
 
   const renderMenu = (userIsLogged, selectedMarker) => {
     // check if admin is logged
@@ -22,10 +53,10 @@ const HomePage = ({ activeMarker }) => {
         return (
           <Menu
             type="AdminSelected"
-            buttonCancelClick={() => console.log('button cancel click')}
+            buttonCancelClick={closePopup}
             buttonEditClick={() => console.log('button edit click')}
-            buttonDeleteClick={() => console.log('button delete click')}
-            buttonExitClick={() => console.log('button exit click')}
+            buttonDeleteClick={deleteSelectedMarker}
+            buttonExitClick={logoutUser}
           />
         );
       }
@@ -34,7 +65,7 @@ const HomePage = ({ activeMarker }) => {
         <Menu
           type="AdminDefault"
           buttonPinClick={() => console.log('button pin click')}
-          buttonExitClick={() => console.log('button logout click')}
+          buttonExitClick={logoutUser}
         />
       );
     }
@@ -44,7 +75,7 @@ const HomePage = ({ activeMarker }) => {
         <Menu
           type="UserSelected"
           buttonGpsClick={() => console.log('button chat clicked')}
-          buttonCancelClick={() => console.log('button cancel clicked')}
+          buttonCancelClick={closePopup}
         />
       );
     }
