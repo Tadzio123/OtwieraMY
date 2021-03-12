@@ -23,8 +23,17 @@ const login = (username, password) => {
     .catch((err) => err.state);
 };
 
-const logout = () => {
+const logout = (authToken) => {
+  const requestOptions = {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: authToken(),
+    },
+  };
+
   localStorage.removeItem('authToken');
+  return fetch(`${CONSTANTS.API_URL}/invalid_token`, requestOptions);
 };
 
 const changePassword = (oldPassword, newPassword, authToken) => {

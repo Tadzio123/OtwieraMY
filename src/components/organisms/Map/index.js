@@ -4,7 +4,7 @@ import {
 } from 'react-leaflet';
 import styled from 'styled-components';
 import placeService from 'services/places.service';
-import Markers from 'components/molecules/Markers';
+import MarkerIcon from 'components/molecules/MarkerIcon';
 import StyledPopup from 'components/molecules/Popup';
 import Typography from 'components/atoms/Typography';
 import { connect } from 'react-redux';
@@ -41,9 +41,9 @@ const Map = ({
   // set icon to active marker
   const getMarkerIcon = (index) => {
     if (index === activeMarker) {
-      return Markers.primaryActive;
+      return MarkerIcon.primaryActive;
     }
-    return Markers.primary;
+    return MarkerIcon.primary;
   };
 
   // set marker active and get data from endpoint by marker id

@@ -29,7 +29,7 @@ const Alert = ({
   // eslint-disable-next-line react/prop-types
   <StyledAlert type={options.type} style={style}>
     <Typography type="font-sm-bolt" color={theme.colorWhite}>{message}</Typography>
-    <Icon onClick={close} color="white" name="union" width="1.6rem" height="1.6rem" cursorType="pointer" />
+    <Icon onClick={close} color="white" name="cancel" width="1.6rem" height="1.6rem" cursorType="pointer" />
   </StyledAlert>
 );
 Alert.propTypes = {
