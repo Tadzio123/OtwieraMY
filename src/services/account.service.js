@@ -10,17 +10,7 @@ const login = (username, password) => {
     }),
   };
 
-  return fetch(`${CONSTANTS.API_URL}/login`, requestOptions)
-    .then((res) => {
-      const { status } = res;
-
-      if (status === 200) {
-        localStorage.setItem('authToken', res.headers.get('Authorization'));
-      }
-
-      return status;
-    })
-    .catch((err) => err.state);
+  return fetch(`${CONSTANTS.API_URL}/login`, requestOptions);
 };
 
 const logout = (authToken) => {
@@ -32,7 +22,6 @@ const logout = (authToken) => {
     },
   };
 
-  localStorage.removeItem('authToken');
   return fetch(`${CONSTANTS.API_URL}/invalid_token`, requestOptions);
 };
 

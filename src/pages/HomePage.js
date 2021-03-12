@@ -26,6 +26,7 @@ const HomePage = ({ activeMarker }) => {
   const logoutUser = () => {
     accountService.logout(authToken)
       .then(() => {
+        localStorage.removeItem('authToken');
         alert.success('Zostałeś wylogowany');
         window.location.reload(true);
       })

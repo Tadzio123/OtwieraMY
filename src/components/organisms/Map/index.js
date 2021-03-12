@@ -9,6 +9,7 @@ import StyledPopup from 'components/molecules/Popup';
 import Typography from 'components/atoms/Typography';
 import { connect } from 'react-redux';
 import mapActions from 'actions/map.actions';
+import { useAlert } from 'react-alert';
 
 const StyledMapContainer = styled(MapContainer)`
   position: absolute;
@@ -24,12 +25,16 @@ const Map = ({
   activeMarker, activeMarkerData, setActiveMarker, setActiveMarkerData,
 }) => {
   const [coordinates, setCoordinates] = useState([]);
+  const alert = useAlert();
 
   const getAllPlacesCoordinates = async () => {
     await placeService
       .getAllPlacesCoordinates()
       .then((req) => req.json())
-      .then((json) => setCoordinates(json));
+      .then((json) => setCoordinates(json))
+      .catch(() => {
+        alert.error('Coś poszło nie tak');
+      });
   };
 
   useEffect(() => {
@@ -51,7 +56,10 @@ const Map = ({
     setActiveMarker(id);
     await placeService.getPlaceByCoordinate(id)
       .then((res) => (res.json()))
-      .then((json) => setActiveMarkerData(json));
+      .then((json) => setActiveMarkerData(json))
+      .catch(() => {
+        alert.error('Coś poszło nie tak');
+      });
   };
 
   return (
@@ -72,7 +80,6 @@ const Map = ({
             }}
           />
         ))}
-
         {activeMarkerData && (
         <StyledPopup
           position={[

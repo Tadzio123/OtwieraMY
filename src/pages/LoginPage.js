@@ -12,6 +12,7 @@ import handleTextType from 'utils/handleTextType';
 import authService from 'services/account.service';
 import routes from 'utils/routes';
 import history from 'utils/history';
+import { useAlert } from 'react-alert';
 
 const Overlay = styled.div`
   width: 100%;
@@ -31,7 +32,7 @@ const Container = styled.div`
   padding: 0 2rem;
   
   position: absolute;
-  z-index: 100;
+  z-index: 49;
   top: calc(50% - 16.9rem);
   left: calc(50% - 16.7rem);
   
@@ -82,23 +83,33 @@ const validationSchema = Yup.object({
   password: Yup.string().required(),
 });
 
-const onSubmit = (values) => {
-  authService.login(values.user, values.password)
-    .then((status) => {
-      if (status === 200) {
-        history.push(routes.home);
-        window.location.reload(true);
-      }
-    });
-};
-
 const LoginPage = () => {
+  const alert = useAlert();
+
   useEffect(() => {
     if (localStorage.getItem('authToken')) {
       history.push(routes.home);
       window.location.reload(true);
     }
   }, []);
+
+  const onSubmit = (values) => {
+    authService.login(values.user, values.password)
+      .then((res) => {
+        if (res.status === 200) {
+          localStorage.setItem('authToken', res.headers.get('Authorization'));
+          alert.success('Zostałeś zalogowany');
+          history.push(routes.home);
+          window.location.reload(true);
+        } if (res.status === 500 || res.status === 401) {
+          alert.error('Nieprawidłowe dane logowania');
+        }
+      })
+      .catch(() => {
+        alert.error('Coś poszło nie tak');
+      });
+  };
+
   return (
     <>
       <Overlay />
