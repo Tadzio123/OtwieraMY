@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Map from 'components/organisms/Map';
 import Menu from 'components/molecules/Menu';
+import MessengerCustomerChat from 'react-messenger-customer-chat';
 import { withRouter } from 'react-router-dom';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
@@ -93,6 +94,7 @@ const HomePage = ({ activeMarker }) => {
   return (
     <>
       {renderMenu(userLogged, activeMarker)}
+      <MessengerCustomerChat pageId="108326621329627" appId="425007615233770" />
       <Map userLogged={userLogged} />
     </>
   );
