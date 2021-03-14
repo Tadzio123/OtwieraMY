@@ -14,9 +14,9 @@ const markerPrimaryActive = new L.Icon({
   iconSize: sizeOfIcon,
 });
 
-const Markers = {
+const MarkerIcon = {
   primary: markerPrimary,
   primaryActive: markerPrimaryActive,
 };
 
-export default Markers;
+export default MarkerIcon;

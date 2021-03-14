@@ -10,21 +10,19 @@ const login = (username, password) => {
     }),
   };
 
-  return fetch(`${CONSTANTS.API_URL}/login`, requestOptions)
-    .then((res) => {
-      const { status } = res;
-
-      if (status === 200) {
-        localStorage.setItem('authToken', res.headers.get('Authorization'));
-      }
-
-      return status;
-    })
-    .catch((err) => err.state);
+  return fetch(`${CONSTANTS.API_URL}/login`, requestOptions);
 };
 
-const logout = () => {
-  localStorage.removeItem('authToken');
+const logout = (authToken) => {
+  const requestOptions = {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: authToken(),
+    },
+  };
+
+  return fetch(`${CONSTANTS.API_URL}/invalid_token`, requestOptions);
 };
 
 const changePassword = (oldPassword, newPassword, authToken) => {

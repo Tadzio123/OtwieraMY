@@ -21,6 +21,7 @@ import TestPage from 'pages/TestPage';
 const options = {
   position: positions.TOP_CENTER,
   transition: transitions.SCALE,
+  timeout: 5000,
   offset: '0',
 };
 
