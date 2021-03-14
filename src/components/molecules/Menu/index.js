@@ -84,7 +84,7 @@ const handleMenuType = (type) => {
 const Menu = ({
   type,
 }) => (
-  <StyledMenu>
+  <StyledMenu id="menu">
     {handleMenuType(type)}
   </StyledMenu>
 );
