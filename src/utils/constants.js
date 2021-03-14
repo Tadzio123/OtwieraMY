@@ -1,5 +1,5 @@
 const CONSTANTS = {
-  API_URL: 'https://otwieramyrest.herokuapp.com',
+  API_URL: 'http://178.33.49.203:8888',
   ACTIVE_MARKER_ID: 'ACTIVE_MARKER_ID',
   ACTIVE_MARKER_DATA: 'ACTIVE_MARKER_DATA',
 };
