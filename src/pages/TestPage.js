@@ -17,7 +17,7 @@ const Container = styled.div`
 // eslint-disable-next-line react/prop-types
 const TestPage = () => (
 	<Container>
-		<ConfirmationModal isOpen='true' />
+		<Modal isOpen='true' />
 	</Container>
 );
 const mapStateToProps = (state) => ({
