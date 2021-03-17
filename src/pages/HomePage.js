@@ -105,28 +105,42 @@ const HomePage = ({ activeMarker, theme, activeMarkerData }) => {
     const {
       city, coordinateX, coordinateY, name, number, postalCode, street,
     } = values;
-    placeService
-      .getAllPlacesCoordinates()
-      .then((res) => res.json())
-      .then((json) => {
-        json.forEach((place) => {
-          if (place.coordinateY === coordinateY) {
-            if (place.coordinateX === coordinateX) {
-              alert.error('Istnieje już lokal na podanych koordynatach');
-            } else if (modalTypeDefault.type === 'ADD') {
-              placeService.addPlace(city, coordinateX, coordinateY, name, number, postalCode, street, authToken)
-                .then(() => {
-                  setPlaceModalIsOpen(false);
-                  alert.success('Lokal został dodany');
-                })
-                .catch(() => {
-                  alert.error('Coś poszło nie tak');
-                });
+
+    if (modalType.type === 'ADD') {
+      placeService
+        .getAllPlacesCoordinates()
+        .then((res) => res.json())
+        .then((json) => {
+          json.forEach((place) => {
+            if (place.coordinateY === coordinateY) {
+              if (place.coordinateX === coordinateX) {
+                alert.error('Istnieje już lokal na podanych koordynatach');
+              } else {
+                placeService.addPlace(city, coordinateX, coordinateY, name, number, postalCode, street, authToken)
+                  .then(() => {
+                    setPlaceModalIsOpen(false);
+                    alert.success('Lokal został dodany');
+                  })
+                  .catch(() => {
+                    alert.error('Coś poszło nie tak');
+                  });
+              }
             }
-          }
+          });
+        })
+        .catch(() => alert.error('Coś poszło nie tak'));
+    } if (modalType.type === 'EDIT') {
+      const { id } = activeMarkerData;
+
+      placeService.updatePlace(city, coordinateX, coordinateY, name, number, postalCode, street, id, authToken)
+        .then(() => {
+          alert.success('Lokal został zakualizowany');
+          setPlaceModalIsOpen(false);
+        })
+        .catch(() => {
+          alert.error('Coś poszło nie tak');
         });
-      })
-      .catch(() => alert.error('Coś poszło nie tak'));
+    }
   };
 
   const closePopup = () => {
