@@ -8,7 +8,7 @@ const StyledContainer = styled.div`
 `;
 
 const StyledLabel = styled.label`
-  padding: 3px;
+  padding: .3rem;
   position: absolute;
   transition: .3s;
   left: 4%;
@@ -19,7 +19,7 @@ const StyledLabel = styled.label`
 
 const StyledInput = styled.input`
   width: 100%;
-  padding: 18px 13px;
+  padding: 1.8rem 1.3rem;
 
   ${() => handleTextType('font-sm-light')};
 

@@ -24,14 +24,14 @@ const UserDefaultMenu = ({ buttonChatClick, buttonGpsClick }) => (
 			buttonSize='md'
 			onClick={buttonChatClick}
 		>
-			<Icon name='chat' color='grey' width='2.5rem' height='2.5rem' />
+			<Icon name='chat' color='grey' width='2.5rem' height='2.5rem' cursorType="pointer" />
 		</StyledCircleButton>
 		<StyledCircleButton
 			id='button-gps'
 			buttonSize='md'
 			onClick={buttonGpsClick}
 		>
-			<Icon name='gps' color='grey' width='2.5rem' height='2.5rem' />
+			<Icon name='gps' color='grey' width='2.5rem' height='2.5rem' cursorType="pointer" />
 		</StyledCircleButton>
 	</>
 );
@@ -43,14 +43,14 @@ const UserPinSelectedMenu = ({ buttonGpsClick, buttonCancelClick }) => (
 			buttonSize='md'
 			onClick={buttonCancelClick}
 		>
-			<Icon name='cancel' color='grey' width='2.5rem' height='2.5rem' />
+			<Icon name='cancel' color='grey' width='2.5rem' height='2.5rem' cursorType="pointer" />
 		</StyledCircleButton>
 		<StyledCircleButton
 			id='button-gps'
 			buttonSize='md'
 			onClick={buttonGpsClick}
 		>
-			<Icon name='gps' color='grey' width='2.5rem' height='2.5rem' />
+			<Icon name='gps' color='grey' width='2.5rem' height='2.5rem' cursorType="pointer" />
 		</StyledCircleButton>
 	</>
 );
@@ -62,14 +62,14 @@ const AdminDefaultMenu = ({ buttonPinClick, buttonExitClick }) => (
 			buttonSize='md'
 			onClick={buttonPinClick}
 		>
-			<Icon name='pin' color='grey' width='2.5rem' height='2.5rem' />
+			<Icon name='pin' color='grey' width='2.5rem' height='2.5rem' cursorType="pointer" />
 		</StyledCircleButton>
 		<StyledCircleButton
 			id='button-exit'
 			buttonSize='md'
 			onClick={buttonExitClick}
 		>
-			<Icon name='exit' color='grey' width='2.5rem' height='2.5rem' />
+			<Icon name='exit' color='grey' width='2.5rem' height='2.5rem' cursorType="pointer" />
 		</StyledCircleButton>
 	</>
 );
@@ -86,28 +86,28 @@ const AdminPinSelectedMenu = ({
 			buttonSize='md'
 			onClick={buttonCancelClick}
 		>
-			<Icon name='cancel' color='grey' width='2.5rem' height='2.5rem' />
+			<Icon name='cancel' color='grey' width='2.5rem' height='2.5rem' cursorType="pointer" />
 		</StyledCircleButton>
 		<StyledCircleButton
 			id='button-edit'
 			buttonSize='md'
 			onClick={buttonEditClick}
 		>
-			<Icon name='edit' color='grey' width='2.5rem' height='2.5rem' />
+			<Icon name='edit' color='grey' width='2.5rem' height='2.5rem' cursorType="pointer" />
 		</StyledCircleButton>
 		<StyledCircleButton
 			id='button-delete'
 			buttonSize='md'
 			onClick={buttonDeleteClick}
 		>
-			<Icon name='delete' color='grey' width='2.5rem' height='2.5rem' />
+			<Icon name='delete' color='grey' width='2.5rem' height='2.5rem' cursorType="pointer" />
 		</StyledCircleButton>
 		<StyledCircleButton
 			id='button-exit'
 			buttonSize='md'
 			onClick={buttonExitClick}
 		>
-			<Icon name='exit' color='grey' width='2.5rem' height='2.5rem' />
+			<Icon name='exit' color='grey' width='2.5rem' height='2.5rem' cursorType="pointer" />
 		</StyledCircleButton>
 	</>
 );
