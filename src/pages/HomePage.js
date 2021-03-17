@@ -61,11 +61,11 @@ const ButtonContainer = styled.div`
   bottom: 2rem;
 `;
 
-const initialValues = {
+let initialValues = {
   name: '',
   street: '',
-  streetNumber: '',
-  postCode: '',
+  number: '',
+  postalCode: '',
   city: '',
   coordinateX: '',
   coordinateY: '',
@@ -74,19 +74,24 @@ const initialValues = {
 const validationSchema = Yup.object({
   name: Yup.string().required(),
   street: Yup.string().required(),
-  streetNumber: Yup.number().required(),
-  postCode: Yup.string().required(),
+  number: Yup.number().required(),
+  postalCode: Yup.string().required(),
   city: Yup.string().required(),
   coordinateX: Yup.number().required(),
   coordinateY: Yup.number().required(),
 });
 
-const HomePage = ({ activeMarker, theme }) => {
+const HomePage = ({ activeMarker, theme, activeMarkerData }) => {
+  const modalTypeDefault = {
+    title: 'DODAJ LOKAL',
+    type: 'ADD',
+  };
+
   const [userLogged, setUserLogged] = useState(false);
 
   const [placeModalIsOpen, setPlaceModalIsOpen] = useState(false);
   const [confirmModalIsOpen, setConfirmModalIsOpen] = useState(false);
-  const [modalTitle, setModalTitle] = useState('DODAJ LOKAL');
+  const [modalType, setModalType] = useState(modalTypeDefault);
 
   const alert = useAlert();
 
@@ -97,14 +102,31 @@ const HomePage = ({ activeMarker, theme }) => {
   }, []);
 
   const onSubmit = (values) => {
-    placeService.addPlace(values.city, values.coordinateX, values.coordinateY, values.name, values.number, values.postCode, values.street, authToken)
-      .then(() => {
-        setPlaceModalIsOpen(false);
-        alert.success('Lokal został dodany');
+    const {
+      city, coordinateX, coordinateY, name, number, postalCode, street,
+    } = values;
+    placeService
+      .getAllPlacesCoordinates()
+      .then((res) => res.json())
+      .then((json) => {
+        json.forEach((place) => {
+          if (place.coordinateY === coordinateY) {
+            if (place.coordinateX === coordinateX) {
+              alert.error('Istnieje już lokal na podanych koordynatach');
+            } else if (modalTypeDefault.type === 'ADD') {
+              placeService.addPlace(city, coordinateX, coordinateY, name, number, postalCode, street, authToken)
+                .then(() => {
+                  setPlaceModalIsOpen(false);
+                  alert.success('Lokal został dodany');
+                })
+                .catch(() => {
+                  alert.error('Coś poszło nie tak');
+                });
+            }
+          }
+        });
       })
-      .catch(() => {
-        alert.error('Coś poszło nie tak');
-      });
+      .catch(() => alert.error('Coś poszło nie tak'));
   };
 
   const closePopup = () => {
@@ -134,6 +156,15 @@ const HomePage = ({ activeMarker, theme }) => {
       });
   };
 
+  const editSelectedMarker = () => {
+    initialValues = activeMarkerData;
+    setModalType({
+      title: 'EDYTUJ LOKAL',
+      type: 'EDIT',
+    });
+    setPlaceModalIsOpen(true);
+  };
+
   const renderMenu = (userIsLogged, selectedMarker) => {
     // check if admin is logged
     if (userIsLogged === true) {
@@ -143,10 +174,7 @@ const HomePage = ({ activeMarker, theme }) => {
           <Menu
             type="AdminSelected"
             buttonCancelClick={closePopup}
-            buttonEditClick={() => {
-              setModalTitle('EDYTUJ LOKAL');
-              setPlaceModalIsOpen(true);
-            }}
+            buttonEditClick={editSelectedMarker}
             buttonDeleteClick={() => setConfirmModalIsOpen(true)}
             buttonExitClick={logoutUser}
           />
@@ -157,7 +185,10 @@ const HomePage = ({ activeMarker, theme }) => {
         <Menu
           type="AdminDefault"
           buttonPinClick={() => {
-            setModalTitle('DODAJ LOKAL');
+            setModalType({
+              title: 'DODAJ LOKAL',
+              type: 'ADD',
+            });
             setPlaceModalIsOpen(true);
           }}
           buttonExitClick={logoutUser}
@@ -202,7 +233,7 @@ const HomePage = ({ activeMarker, theme }) => {
 
       <Modal isOpenState={placeModalIsOpen} closeModalState={setPlaceModalIsOpen} widthSize="50.4rem" heightSize="52.3rem">
         <ModalTitleContainer>
-          <Typography color={theme.colorGray40} component="p" type="font-md-regular">{modalTitle}</Typography>
+          <Typography color={theme.colorGray40} component="p" type="font-md-regular">{modalType.title}</Typography>
         </ModalTitleContainer>
         <Line />
         <Formik initialValues={initialValues} onSubmit={onSubmit} validateOnChange validationSchema={validationSchema}>
@@ -229,22 +260,22 @@ const HomePage = ({ activeMarker, theme }) => {
                     as={Input}
                   />
                   <Field
-                    id="streetNumber"
+                    id="number"
                     type="text"
-                    name="streetNumber"
+                    name="number"
                     placeholder="Numer"
-                    error={errors.streetNumber && touched.streetNumber}
+                    error={errors.number && touched.number}
                     as={Input}
                   />
                 </StreetInput>
               </InputContainer>
               <InputContainer>
                 <Field
-                  id="postCode"
+                  id="postalCode"
                   type="text"
-                  name="postCode"
+                  name="postalCode"
                   placeholder="Kod pocztowy"
-                  error={errors.postCode && touched.postCode}
+                  error={errors.postalCode && touched.postalCode}
                   as={Input}
                 />
               </InputContainer>
@@ -291,6 +322,7 @@ const HomePage = ({ activeMarker, theme }) => {
 
 const mapStateToProps = (state) => ({
   activeMarker: state.markerID.selectedMarkerID,
+  activeMarkerData: state.markerData.selectedMarkerData,
 });
 
 export default compose(
