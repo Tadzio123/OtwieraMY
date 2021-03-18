@@ -1,0 +1,16 @@
+<svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g filter="url(#filter0_f)">
+<circle cx="10.25" cy="10.25" r="6.25" fill="#1976D2"/>
+</g>
+<path d="M15.7788 10.25C15.7788 13.3035 13.3035 15.7789 10.25 15.7789C7.19648 15.7789 4.72113 13.3035 4.72113 10.25C4.72113 7.19654 7.19648 4.72119 10.25 4.72119C13.3035 4.72119 15.7788 7.19654 15.7788 10.25Z" fill="#1976D2"/>
+<circle cx="10.25" cy="10.2498" r="4.32692" fill="white"/>
+<circle cx="10.25" cy="10.2498" r="4.32692" fill="white"/>
+<circle cx="10.25" cy="10.2498" r="4.32692" fill="#1976D2"/>
+<defs>
+<filter id="filter0_f" x="0" y="0" width="20.5" height="20.5" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+<feGaussianBlur stdDeviation="2" result="effect1_foregroundBlur"/>
+</filter>
+</defs>
+</svg>
