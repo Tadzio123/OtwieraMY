@@ -5,6 +5,9 @@ const StyledPopup = styled(Popup)`
   .leaflet-popup-content-wrapper {
     border-radius: 1rem;
     box-shadow: 0 .4rem .4rem rgba(0, 0, 0, 0.25);
+    position: absolute;
+    top: -8.8rem;
+    left: 1.8rem;
   }
   
   .leaflet-popup-content{

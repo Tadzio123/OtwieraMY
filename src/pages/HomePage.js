@@ -16,6 +16,7 @@ import * as Yup from 'yup';
 import Input from 'components/atoms/Input';
 import Button from 'components/atoms/Button';
 import Typography from 'components/atoms/Typography';
+import mapActions from '../actions/map.actions';
 
 const ModalTitleContainer = styled.div`
   margin-top: 1rem;
@@ -61,6 +62,7 @@ const ButtonContainer = styled.div`
   bottom: 2rem;
 `;
 
+// formik default values
 let initialValues = {
   name: '',
   street: '',
@@ -71,6 +73,7 @@ let initialValues = {
   coordinateY: '',
 };
 
+// formik validation
 const validationSchema = Yup.object({
   name: Yup.string().required(),
   street: Yup.string().required(),
@@ -81,26 +84,42 @@ const validationSchema = Yup.object({
   coordinateY: Yup.number().required(),
 });
 
-const HomePage = ({ activeMarker, theme, activeMarkerData }) => {
-  const modalTypeDefault = {
-    title: 'DODAJ LOKAL',
-    type: 'ADD',
-  };
-
+const HomePage = ({
+  activeMarker, activeMarkerData, setUserLocation, theme,
+}) => {
   const [userLogged, setUserLogged] = useState(false);
 
   const [placeModalIsOpen, setPlaceModalIsOpen] = useState(false);
   const [confirmModalIsOpen, setConfirmModalIsOpen] = useState(false);
-  const [modalType, setModalType] = useState(modalTypeDefault);
+  const [modalType, setModalType] = useState({
+    title: 'DODAJ LOKAL',
+    type: 'ADD',
+  });
 
   const alert = useAlert();
 
+  // get user location when user location is in poland
+  const getUserLocation = () => {
+    function success(position) {
+      const { latitude, longitude } = position.coords;
+
+      setUserLocation([latitude, longitude]);
+    }
+
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(success, null);
+    }
+  };
+
+  // get authToken from localstorage
   useEffect(() => {
     if (localStorage.getItem('authToken')) {
       setUserLogged(true);
     }
+    getUserLocation();
   }, []);
 
+  // create or update place
   const onSubmit = (values) => {
     const {
       city, coordinateX, coordinateY, name, number, postalCode, street,
@@ -141,10 +160,12 @@ const HomePage = ({ activeMarker, theme, activeMarkerData }) => {
     }
   };
 
+  // close popup when marker is selected
   const closePopup = () => {
     document.querySelector('.leaflet-popup-close-button').click();
   };
 
+  // logout user when token exists in localstorage
   const logoutUser = () => {
     accountService.logout(authToken)
       .then(() => {
@@ -157,6 +178,7 @@ const HomePage = ({ activeMarker, theme, activeMarkerData }) => {
       });
   };
 
+  // delete selected marker on click button
   const deleteSelectedMarker = () => {
     placeService.deletePlace(activeMarker, authToken)
       .then(() => {
@@ -168,6 +190,7 @@ const HomePage = ({ activeMarker, theme, activeMarkerData }) => {
       });
   };
 
+  // edit selected marker and open modal
   const editSelectedMarker = () => {
     initialValues = activeMarkerData;
     setModalType({
@@ -212,7 +235,7 @@ const HomePage = ({ activeMarker, theme, activeMarkerData }) => {
       return (
         <Menu
           type="UserSelected"
-          buttonGpsClick={() => console.log('button chat clicked')}
+          buttonGpsClick={getUserLocation}
           buttonCancelClick={closePopup}
         />
       );
@@ -222,7 +245,7 @@ const HomePage = ({ activeMarker, theme, activeMarkerData }) => {
       <Menu
         type="UserDefault"
         buttonChatClick={() => console.log('button chat clicked')}
-        buttonGpsClick={() => console.log('button gps clicked')}
+        buttonGpsClick={getUserLocation}
       />
     );
   };
@@ -337,8 +360,12 @@ const mapStateToProps = (state) => ({
   activeMarkerData: state.markerData.selectedMarkerData,
 });
 
+const mapDispatchToProps = (dispatch) => ({
+  setUserLocation: (data) => dispatch(mapActions.userLocationData(data)),
+});
+
 export default compose(
   withRouter,
   withTheme,
-  connect(mapStateToProps),
+  connect(mapStateToProps, mapDispatchToProps),
 )(HomePage);
