@@ -10,9 +10,15 @@ const activeMarkerData = (data) => ({
   payload: data,
 });
 
+const userLocationData = (data) => ({
+  type: CONSTANTS.USER_LOCATION,
+  payload: data,
+});
+
 const mapActions = {
   activeMarkerID,
   activeMarkerData,
+  userLocationData,
 };
 
 export default mapActions;

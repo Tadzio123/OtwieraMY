@@ -17,7 +17,7 @@ const markerPrimaryActive = new L.Icon({
 
 const markerUser = new L.Icon({
   iconUrl: markerUserIcon,
-  iconSize: [12.5, 12.5],
+  iconSize: [35, 35],
 });
 
 const MarkerIcon = {

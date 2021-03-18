@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import {
-  MapContainer, TileLayer, Marker,
+  MapContainer, TileLayer, Marker, useMap,
 } from 'react-leaflet';
 import styled from 'styled-components';
 import placeService from 'services/places.service';
@@ -21,8 +21,27 @@ const StyledMapContainer = styled(MapContainer)`
   height: 100vh;
 `;
 
+const UserLocationMarker = ({ userLocation }) => {
+  const map = useMap();
+
+  return (
+    <>
+      {userLocation && (
+        <Marker
+          position={userLocation}
+          icon={MarkerIcon.user}
+          id="user-location-marker"
+          eventHandlers={{
+            click: map.setView(userLocation, 10),
+          }}
+        />
+      )}
+    </>
+  );
+};
+
 const Map = ({
-  activeMarker, activeMarkerData, setActiveMarker, setActiveMarkerData,
+  activeMarker, activeMarkerData, setActiveMarker, setActiveMarkerData, userLocation,
 }) => {
   const [coordinates, setCoordinates] = useState([]);
   const alert = useAlert();
@@ -41,7 +60,12 @@ const Map = ({
     getAllPlacesCoordinates();
   }, []);
 
-  const mapDefaultPosition = [51.919437, 19.145136];
+  const defaultMapPosition = () => {
+    if (userLocation !== null) {
+      return userLocation;
+    }
+    return [51.919437, 19.145136];
+  };
 
   // set icon to active marker
   const getMarkerIcon = (index) => {
@@ -64,11 +88,14 @@ const Map = ({
 
   return (
     <>
-      <StyledMapContainer center={mapDefaultPosition} zoom={13} scrollWheelZoom zoomControl={false}>
+      <StyledMapContainer center={defaultMapPosition()} zoom={10} scrollWheelZoom zoomControl={false}>
         <TileLayer
           attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
           url="https://api.maptiler.com/maps/bright/{z}/{x}/{y}.png?key=ABxrBA7sOVSSwxg7OTjT"
         />
+
+        <UserLocationMarker userLocation={userLocation} />
+
         {coordinates.map((place) => (
           <Marker
             key={place.id}
@@ -111,6 +138,7 @@ const Map = ({
 const mapStateToProps = (state) => ({
   activeMarker: state.markerID.selectedMarkerID,
   activeMarkerData: state.markerData.selectedMarkerData,
+  userLocation: state.userLocation.userLocationData,
 });
 
 const mapDispatchToProps = (dispatch) => ({

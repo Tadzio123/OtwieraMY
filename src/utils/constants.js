@@ -1,7 +1,8 @@
 const CONSTANTS = {
-  API_URL: 'http://178.33.49.203:8888',
+  API_URL: 'http://otwieramygastro.pl:8888',
   ACTIVE_MARKER_ID: 'ACTIVE_MARKER_ID',
   ACTIVE_MARKER_DATA: 'ACTIVE_MARKER_DATA',
+  USER_LOCATION: 'USER_POSITION',
 };
 
 export default CONSTANTS;
