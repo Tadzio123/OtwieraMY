@@ -24,19 +24,14 @@ const StyledMapContainer = styled(MapContainer)`
 const UserLocationMarker = ({ userLocation }) => {
   const map = useMap();
 
-  return (
-    <>
-      {userLocation && (
-        <Marker
-          position={userLocation}
-          icon={MarkerIcon.user}
-          id="user-location-marker"
-          eventHandlers={{
-            click: map.setView(userLocation, 10),
-          }}
-        />
-      )}
-    </>
+  return userLocation && (
+    <Marker
+      position={userLocation}
+      icon={MarkerIcon.user}
+      eventHandlers={{
+        click: () => map.setView(userLocation, 10),
+      }}
+    />
   );
 };
 
@@ -108,27 +103,27 @@ const Map = ({
           />
         ))}
         {activeMarkerData && (
-        <StyledPopup
-          position={[
-            activeMarkerData.coordinateX,
-            activeMarkerData.coordinateY,
-          ]}
-          onClose={() => {
-            setActiveMarkerData(null);
-            setActiveMarker(null);
-          }}
-        >
-          <Typography component="h4" type="font-md-regular">{activeMarkerData.name}</Typography>
-          <Typography component="p" type="font-sm-light">
-            {activeMarkerData.street}
-            {' '}
-            {activeMarkerData.number}
-            {', '}
-            {activeMarkerData.postalCode}
-            {' '}
-            {activeMarkerData.city}
-          </Typography>
-        </StyledPopup>
+          <StyledPopup
+            position={[
+              activeMarkerData.coordinateX,
+              activeMarkerData.coordinateY,
+            ]}
+            onClose={() => {
+              setActiveMarkerData(null);
+              setActiveMarker(null);
+            }}
+          >
+            <Typography component="h4" type="font-md-regular">{activeMarkerData.name}</Typography>
+            <Typography component="p" type="font-sm-light">
+              {activeMarkerData.street}
+              {' '}
+              {activeMarkerData.number}
+              {', '}
+              {activeMarkerData.postalCode}
+              {' '}
+              {activeMarkerData.city}
+            </Typography>
+          </StyledPopup>
         )}
       </StyledMapContainer>
     </>

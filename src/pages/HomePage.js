@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import React, { useEffect, useState } from 'react';
 import Map from 'components/organisms/Map';
 import Menu from 'components/molecules/Menu';
@@ -16,7 +18,7 @@ import * as Yup from 'yup';
 import Input from 'components/atoms/Input';
 import Button from 'components/atoms/Button';
 import Typography from 'components/atoms/Typography';
-import mapActions from '../actions/map.actions';
+import mapActions from 'actions/map.actions';
 
 const ModalTitleContainer = styled.div`
   margin-top: 1rem;
@@ -100,6 +102,11 @@ const HomePage = ({
 
   // get user location when user location is in poland
   const getUserLocation = () => {
+    if (document.getElementById('user-location-marker')) {
+      const markers = document.getElementsByClassName('leaflet-marker-icon');
+      markers[0].click();
+    }
+
     function success(position) {
       const { latitude, longitude } = position.coords;
 
