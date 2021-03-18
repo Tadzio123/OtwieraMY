@@ -130,9 +130,7 @@ const HomePage = ({ activeMarker, theme, activeMarkerData }) => {
         })
         .catch(() => alert.error('Coś poszło nie tak'));
     } if (modalType.type === 'EDIT') {
-      const { id } = activeMarkerData;
-
-      placeService.updatePlace(city, coordinateX, coordinateY, name, number, postalCode, street, id, authToken)
+      placeService.updatePlace(city, coordinateX, coordinateY, name, number, postalCode, street, activeMarker, authToken)
         .then(() => {
           alert.success('Lokal został zakualizowany');
           setPlaceModalIsOpen(false);
