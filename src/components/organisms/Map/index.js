@@ -26,6 +26,16 @@ const StyledMapContainer = styled(MapContainer)`
 const UserLocationMarker = ({ userLocation }) => {
   const map = useMap();
 
+  const registerEvent = () => {
+    if(document.getElementById('button-gps')){
+      document.getElementById('button-gps').addEventListener('click', e => {
+        if(userLocation !== null){
+          map.setView(userLocation, 10);
+        }
+      })
+    }
+  }
+
   return (
     <>
       {userLocation && (
@@ -33,9 +43,7 @@ const UserLocationMarker = ({ userLocation }) => {
             position={userLocation}
             icon={MarkerIcon.user}
             eventHandlers={
-              document.getElementById('button-gps').addEventListener('click', e => {
-                map.setView(userLocation, 10);
-              })
+              registerEvent()
             }
           />
       )}
@@ -108,7 +116,7 @@ const Map = ({
           url="https://api.maptiler.com/maps/bright/{z}/{x}/{y}.png?key=ABxrBA7sOVSSwxg7OTjT"
         />
 
-        <UserLocationMarker userLocation={userLocation} />
+        <UserLocationMarker userLocation={userLocation} alert={alert}/>
 
         {coordinates.map((place) => (
           <Marker
