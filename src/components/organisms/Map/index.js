@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import React, { useState, useEffect } from 'react';
 import {
   MapContainer, TileLayer, Marker, useMap,
@@ -12,31 +14,41 @@ import mapActions from 'actions/map.actions';
 import { useAlert } from 'react-alert';
 
 const StyledMapContainer = styled(MapContainer)`
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 1;
-  
-  width: 100%;
-  height: 100vh;
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 1;
+
+	width: 100%;
+	height: 100vh;
 `;
 
 const UserLocationMarker = ({ userLocation }) => {
   const map = useMap();
 
-  return userLocation && (
-    <Marker
-      position={userLocation}
-      icon={MarkerIcon.user}
-      eventHandlers={{
-        click: () => map.setView(userLocation, 10),
-      }}
-    />
+  return (
+    <>
+      {userLocation && (
+          <Marker
+            position={userLocation}
+            icon={MarkerIcon.user}
+            eventHandlers={
+              document.getElementById('button-gps').addEventListener('click', e => {
+                map.setView(userLocation, 10);
+              })
+            }
+          />
+      )}
+    </>
   );
 };
 
 const Map = ({
-  activeMarker, activeMarkerData, setActiveMarker, setActiveMarkerData, userLocation,
+  activeMarker,
+  activeMarkerData,
+  setActiveMarker,
+  setActiveMarkerData,
+  userLocation,
 }) => {
   const [coordinates, setCoordinates] = useState([]);
   const alert = useAlert();
@@ -53,13 +65,14 @@ const Map = ({
 
   useEffect(() => {
     getAllPlacesCoordinates();
+
   }, []);
 
   const defaultMapPosition = () => {
-    if (userLocation !== null) {
-      return userLocation;
+    if (userLocation === null) {
+      return [51.919437, 19.145136];
     }
-    return [51.919437, 19.145136];
+    return userLocation;
   };
 
   // set icon to active marker
@@ -73,8 +86,9 @@ const Map = ({
   // set marker active and get data from endpoint by marker id
   const setActiveMarkerFunc = async (id) => {
     setActiveMarker(id);
-    await placeService.getPlaceByCoordinate(id)
-      .then((res) => (res.json()))
+    await placeService
+      .getPlaceByCoordinate(id)
+      .then((res) => res.json())
       .then((json) => setActiveMarkerData(json))
       .catch(() => {
         alert.error('Coś poszło nie tak');
@@ -83,7 +97,12 @@ const Map = ({
 
   return (
     <>
-      <StyledMapContainer center={defaultMapPosition()} zoom={10} scrollWheelZoom zoomControl={false}>
+      <StyledMapContainer
+        center={defaultMapPosition()}
+        zoom={10}
+        scrollWheelZoom
+        zoomControl={false}
+      >
         <TileLayer
           attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
           url="https://api.maptiler.com/maps/bright/{z}/{x}/{y}.png?key=ABxrBA7sOVSSwxg7OTjT"
@@ -98,7 +117,7 @@ const Map = ({
             icon={getMarkerIcon(place.id)}
             position={[place.coordinateX, place.coordinateY]}
             eventHandlers={{
-              click: () => setActiveMarkerFunc(place.id),
+              click: () => setActiveMarkerFunc(place.id)
             }}
           />
         ))}
@@ -113,7 +132,9 @@ const Map = ({
               setActiveMarker(null);
             }}
           >
-            <Typography component="h4" type="font-md-regular">{activeMarkerData.name}</Typography>
+            <Typography component="h4" type="font-md-regular">
+              {activeMarkerData.name}
+            </Typography>
             <Typography component="p" type="font-sm-light">
               {activeMarkerData.street}
               {' '}

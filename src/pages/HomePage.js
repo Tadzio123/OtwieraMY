@@ -97,15 +97,10 @@ const HomePage = ({
     title: 'DODAJ LOKAL',
     type: 'ADD',
   });
-
   const alert = useAlert();
 
   // get user location when user location is in poland
   const getUserLocation = () => {
-    if (document.getElementById('user-location-marker')) {
-      const markers = document.getElementsByClassName('leaflet-marker-icon');
-      markers[0].click();
-    }
 
     function success(position) {
       const { latitude, longitude } = position.coords;
