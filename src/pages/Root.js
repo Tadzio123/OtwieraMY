@@ -17,6 +17,7 @@ import HomePageTemplate from 'template/HomePageTemplate';
 import Alert from 'components/molecules/Alert';
 import { Provider } from 'react-redux';
 import store from '_helpers/store';
+import NotFound from './NotFound';
 
 const options = {
 	position: positions.TOP_CENTER,
@@ -37,6 +38,7 @@ const Root = () => (
 									<Route exact path={routes.login} component={LoginPage} />
 									<HomePageTemplate>
 										<Route exact path={routes.home} component={HomePage} />
+										<Route component={NotFound} />
 									</HomePageTemplate>
 								</Switch>
 							</Router>
