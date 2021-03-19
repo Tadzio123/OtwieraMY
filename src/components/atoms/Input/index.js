@@ -12,7 +12,7 @@ const StyledLabel = styled.label`
 	padding: 0.3rem;
 	position: absolute;
 	transition: 0.3s;
-	left: 4%;
+	left: 1.6rem;
 	top: -15%;
 	font-size: 1rem;
 	background-color: white;
@@ -50,11 +50,11 @@ const StyledInput = styled.input`
 		top: -15% !important;
 		transform: translateY(0%) !important;
 		font-size: 1rem !important;
-		left: 4% !important;
+		left: 1.6rem !important;
 	}
 
 	&:placeholder-shown + label {
-		left: 4.4%;
+		left: 1.8rem;
 		top: 50%;
 		transform: translateY(-50%);
 		font-size: 1.4rem;

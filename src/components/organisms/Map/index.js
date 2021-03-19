@@ -9,6 +9,7 @@ import Typography from 'components/atoms/Typography';
 import { connect } from 'react-redux';
 import mapActions from 'actions/map.actions';
 import { useAlert } from 'react-alert';
+// import LoadCountriesTask from 'tasks/LoadCountriesTask';
 
 const StyledMapContainer = styled(MapContainer)`
 	position: absolute;
@@ -45,6 +46,7 @@ const Map = ({
 	setActiveMarker,
 	setActiveMarkerData,
 	userLocation,
+	// countries,
 }) => {
 	const [coordinates, setCoordinates] = useState([]);
 	const alert = useAlert();
@@ -58,6 +60,18 @@ const Map = ({
 				alert.error('Coś poszło nie tak');
 			});
 	};
+
+	// Set map color
+	// const [countries, setCountries] = useState([]);
+	// const setCountryColor = (mapCountry) => {};
+	// console.log(countries);
+
+	// const load = () => {
+	// 	const loadCountriesTask = new LoadCountriesTask();
+	// 	loadCountriesTask.load(setCountries);
+	// };
+
+	// useEffect(load, []); //page load we tell it that it will track [] componentDidMount
 
 	useEffect(() => {
 		getAllPlacesCoordinates();
