@@ -116,7 +116,7 @@ const Map = ({
           url="https://api.maptiler.com/maps/bright/{z}/{x}/{y}.png?key=ABxrBA7sOVSSwxg7OTjT"
         />
 
-        <UserLocationMarker userLocation={userLocation} alert={alert}/>
+        <UserLocationMarker userLocation={userLocation} />
 
         {coordinates.map((place) => (
           <Marker
