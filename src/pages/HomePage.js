@@ -13,7 +13,7 @@ import placeService from 'services/places.service';
 import authToken from '_helpers/authToken';
 import Modal from 'components/molecules/Modal';
 import styled, { withTheme } from 'styled-components';
-import { Field, Form, Formik } from 'formik';
+import {Field, Form, Formik } from 'formik';
 import * as Yup from 'yup';
 import Input from 'components/atoms/Input';
 import Button from 'components/atoms/Button';
@@ -227,6 +227,15 @@ const HomePage = ({
               type: 'ADD',
             });
             setPlaceModalIsOpen(true);
+            initialValues = {
+              name: '',
+              street: '',
+              number: '',
+              postalCode: '',
+              city: '',
+              coordinateX: '',
+              coordinateY: '',
+            }
           }}
           buttonExitClick={logoutUser}
         />
