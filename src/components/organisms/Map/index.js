@@ -113,7 +113,7 @@ const Map = ({
       >
         <TileLayer
           attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-          url="https://api.maptiler.com/maps/bright/{z}/{x}/{y}.png?key=ABxrBA7sOVSSwxg7OTjT"
+          url="https://api.maptiler.com/maps/bright/{z}/{x}/{y}.png?key=9Sp7kUqsn4sUPDaZCS2g"
         />
 
         <UserLocationMarker userLocation={userLocation} />

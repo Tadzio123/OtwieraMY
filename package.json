@@ -6,8 +6,6 @@
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
-    "axios": "^0.21.1",
-    "eslint": "^7.18.0",
     "formik": "^2.2.6",
     "history": "^4.10.1",
     "json-parse-even-better-errors": "^2.3.1",
@@ -22,8 +20,6 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.1",
     "redux": "^4.0.5",
-    "redux-devtools": "^3.7.0",
-    "redux-devtools-extension": "^2.13.8",
     "rxjs": "^6.6.6",
     "styled-components": "^5.2.1",
     "web-vitals": "^0.2.4",
@@ -55,7 +51,10 @@
     ]
   },
   "devDependencies": {
-    "eslint-config-airbnb": "^18.2.1"
+    "eslint": "^7.18.0",
+    "eslint-config-airbnb": "^18.2.1",
+    "redux-devtools": "^3.7.0",
+    "redux-devtools-extension": "^2.13.8"
   },
   "engines": {
     "node": "15.4.0",
