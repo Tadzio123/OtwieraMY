@@ -32,7 +32,6 @@ const Root = () => (
 			<ThemeContext.Provider value={theme}>
 				<AlertProvider template={Alert} {...options}>
 					<GlobalTemplate>
-						<BrowserRouter basename="/">
 							<Router history={history}>
 								<Switch>
 									<Route exact path={routes.login} component={LoginPage} />
@@ -42,7 +41,6 @@ const Root = () => (
 									</HomePageTemplate>
 								</Switch>
 							</Router>
-						</BrowserRouter>
 					</GlobalTemplate>
 				</AlertProvider>
 			</ThemeContext.Provider>
