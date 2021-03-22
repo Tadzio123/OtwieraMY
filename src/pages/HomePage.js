@@ -19,6 +19,7 @@ import Input from 'components/atoms/Input';
 import Button from 'components/atoms/Button';
 import Typography from 'components/atoms/Typography';
 import mapActions from 'actions/map.actions';
+import HomePageTemplate from 'template/HomePageTemplate';
 
 const ModalTitleContainer = styled.div`
 	margin-top: 1rem;
@@ -295,7 +296,7 @@ const HomePage = ({
 	};
 
 	return (
-		<>
+		<HomePageTemplate>
 			{renderMenu(userLogged, activeMarker)}
 			<MessengerCustomerChat pageId="108326621329627" appId="425007615233770" />
 			<Map userLogged={userLogged} />
@@ -441,7 +442,7 @@ const HomePage = ({
 					)}
 				</Formik>
 			</Modal>
-		</>
+		</HomePageTemplate>
 	);
 };
 

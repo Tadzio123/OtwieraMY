@@ -31,15 +31,15 @@ const Root = () => (
       <ThemeContext.Provider value={theme}>
         <AlertProvider template={Alert} {...options}>
           <GlobalTemplate>
-            <Router history={history}>
-              <Switch>
-                <Route exact path={routes.login} component={LoginPage} />
-                <HomePageTemplate>
+            <HomePageTemplate>
+              <Router history={history}>
+                <Switch>
+                  <Route exact path={routes.login} component={LoginPage} />
                   <Route exact path={routes.home} component={HomePage} />
                   <Route component={NotFound} />
-                </HomePageTemplate>
-              </Switch>
-            </Router>
+                </Switch>
+              </Router>
+            </HomePageTemplate>
           </GlobalTemplate>
         </AlertProvider>
       </ThemeContext.Provider>
