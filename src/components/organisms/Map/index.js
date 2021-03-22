@@ -113,7 +113,7 @@ const Map = ({
       >
         <TileLayer
           attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-          url="http://tiles.stadiamaps.com/tiles/outdoors/{z}/{x}/{y}{r}.png"
+          url="https://api.maptiler.com/maps/streets/{z}/{x}/{y}.png?key=VfikjXBYWbmbs3PvGKqm"
         />
 
         <UserLocationMarker userLocation={userLocation} />
