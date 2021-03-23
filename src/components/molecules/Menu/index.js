@@ -17,15 +17,8 @@ const StyledCircleButton = styled(CircleButton)`
 	margin-bottom: 3rem;
 `;
 
-const UserDefaultMenu = ({ buttonChatClick, buttonGpsClick }) => (
+const UserDefaultMenu = ({ buttonGpsClick }) => (
 	<>
-		<StyledCircleButton
-			id='button-chat'
-			buttonSize='md'
-			onClick={buttonChatClick}
-		>
-			<Icon name='chat' color='grey' width='2.5rem' height='2.5rem' cursorType="pointer" />
-		</StyledCircleButton>
 		<StyledCircleButton
 			id='button-gps'
 			buttonSize='md'
@@ -114,7 +107,6 @@ const AdminPinSelectedMenu = ({
 
 const handleMenuType = (
 	type,
-	buttonChatClick,
 	buttonGpsClick,
 	buttonCancelClick,
 	buttonPinClick,
@@ -125,7 +117,6 @@ const handleMenuType = (
 	if (type === 'UserDefault') {
 		return (
 			<UserDefaultMenu
-				buttonChatClick={buttonChatClick}
 				buttonGpsClick={buttonGpsClick}
 			/>
 		);
@@ -161,7 +152,6 @@ const handleMenuType = (
 
 const Menu = ({
 	type,
-	buttonChatClick,
 	buttonGpsClick,
 	buttonCancelClick,
 	buttonPinClick,
@@ -172,7 +162,6 @@ const Menu = ({
 	<StyledMenu>
 		{handleMenuType(
 			type,
-			buttonChatClick,
 			buttonGpsClick,
 			buttonCancelClick,
 			buttonPinClick,

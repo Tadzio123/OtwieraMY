@@ -287,7 +287,6 @@ const HomePage = ({
 		return (
 			<Menu
 				type="UserDefault"
-				buttonChatClick={() => console.log('button chat clicked')}
 				buttonGpsClick={getUserLocation}
 			/>
 		);
