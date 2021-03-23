@@ -332,6 +332,7 @@ const HomePage = ({
 					>
 						Anuluj
 					</Button>
+					<span>&nbsp;&nbsp;</span>
 					<Button
 						buttonType="secondary"
 						buttonSize="md"

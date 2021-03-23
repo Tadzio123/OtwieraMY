@@ -11,6 +11,10 @@ const GlobalStyle = createGlobalStyle`
     margin: 0;
     padding: 0;
   }
+
+  body #fb-root {
+    display: block;
+  }
   
   body{
       background-image: url("assets/img/bg.png");
