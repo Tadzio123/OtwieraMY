@@ -1,9 +1,7 @@
 /* eslint-disable */
-
 import React, { useEffect, useState } from 'react';
 import Map from 'components/organisms/Map';
 import Menu from 'components/molecules/Menu';
-// import MessengerCustomerChat from 'react-messenger-customer-chat';
 import { withRouter } from 'react-router-dom';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
@@ -19,11 +17,8 @@ import Input from 'components/atoms/Input';
 import Button from 'components/atoms/Button';
 import Typography from 'components/atoms/Typography';
 import mapActions from 'actions/map.actions';
-<<<<<<< HEAD
 import MessengerCustomerChat from 'components/atoms/messenger';
-=======
 import HomePageTemplate from 'template/HomePageTemplate';
->>>>>>> 315de31d121f6fcdd0f2570c1f0fb10e032af3ba
 
 const ModalTitleContainer = styled.div`
 	margin-top: 1rem;
