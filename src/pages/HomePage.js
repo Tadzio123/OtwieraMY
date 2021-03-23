@@ -58,10 +58,10 @@ const InputContainer = styled.div`
 	margin-bottom: 2rem;
 `;
 
-const ButtonContainer = styled.div`
-	position: absolute;
-	right: 2rem;
-	bottom: 2rem;
+const EditButtonContainer = styled.div`
+	width: 100%;
+	display: flex;
+	justify-content: flex-end;
 `;
 
 // formik default values
@@ -331,6 +331,7 @@ const HomePage = ({
 					>
 						Anuluj
 					</Button>
+					<span>&nbsp;&nbsp;</span>
 					<Button
 						buttonType="secondary"
 						buttonSize="md"
@@ -435,7 +436,7 @@ const HomePage = ({
 									/>
 								</CoordinatesInput>
 							</InputContainer>
-							<ButtonContainer>
+							<EditButtonContainer>
 								<Button
 									buttonSize="md"
 									buttonType="primary"
@@ -444,7 +445,7 @@ const HomePage = ({
 								>
 									Zapisz
 								</Button>
-							</ButtonContainer>
+							</EditButtonContainer>
 						</Form>
 					)}
 				</Formik>
