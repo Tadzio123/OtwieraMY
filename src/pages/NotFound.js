@@ -1,13 +1,13 @@
 /* eslint-disable */
 import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import handleTextType from 'utils/handleTextType';
 import Button from 'components/atoms/Button';
 import routes from 'utils/routes';
 import HotDogIcon from 'assets/icons/hotDogIcon.svg';
 
-const StyledConteiner = styled.div`
+const StyledContainer = styled.div`
 	width: 100%;
 	height: 100%;
 	display: flex;
@@ -40,7 +40,7 @@ const StyledLink = styled(Link)`
 `;
 
 const NotFound = () => (
-	<StyledConteiner>
+	<StyledContainer>
 		<Styled404>
 			4 <img src={HotDogIcon}></img> 4
 		</Styled404>
@@ -48,7 +48,7 @@ const NotFound = () => (
 		<StyledLink to={routes.home}>
 			<Button buttonSize="md">Wstecz</Button>
 		</StyledLink>
-	</StyledConteiner>
+	</StyledContainer>
 );
 
-export default NotFound;
+export default withRouter(NotFound);
