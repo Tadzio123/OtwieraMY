@@ -19,7 +19,11 @@ import Input from 'components/atoms/Input';
 import Button from 'components/atoms/Button';
 import Typography from 'components/atoms/Typography';
 import mapActions from 'actions/map.actions';
+<<<<<<< HEAD
 import MessengerCustomerChat from 'components/atoms/messenger';
+=======
+import HomePageTemplate from 'template/HomePageTemplate';
+>>>>>>> 315de31d121f6fcdd0f2570c1f0fb10e032af3ba
 
 const ModalTitleContainer = styled.div`
 	margin-top: 1rem;
@@ -295,7 +299,7 @@ const HomePage = ({
 	};
 
 	return (
-		<>
+		<HomePageTemplate>
 			{renderMenu(userLogged, activeMarker)}
 			{!userLogged && (
 				<MessengerCustomerChat
@@ -451,7 +455,7 @@ const HomePage = ({
 					)}
 				</Formik>
 			</Modal>
-		</>
+		</HomePageTemplate>
 	);
 };
 

@@ -44,7 +44,7 @@ const NotFound = () => (
 		<Styled404>
 			4 <img src={HotDogIcon}></img> 4
 		</Styled404>
-		<StyledHeader>Coś pożarło tę stronę internetu.</StyledHeader>
+		<StyledHeader>Coś pożarło tę stronę.</StyledHeader>
 		<StyledLink to={routes.home}>
 			<Button buttonSize="md">Wstecz</Button>
 		</StyledLink>
