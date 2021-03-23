@@ -16,7 +16,7 @@ import HomePageTemplate from 'template/HomePageTemplate';
 import Alert from 'components/molecules/Alert';
 import { Provider } from 'react-redux';
 import store from '_helpers/store';
-import NotFound from './NotFound';
+import NotFound from 'pages/NotFound';
 
 const options = {
   position: positions.TOP_CENTER,
