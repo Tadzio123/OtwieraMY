@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import handleTextType from 'utils/handleTextType';
 import Button from 'components/atoms/Button';
 import routes from 'utils/routes';
-import HotDogIcon from 'assets/icons/hotDogIcon.svg';
+import NotFoundIcon from 'assets/icons/notFound.svg';
 
 const StyledContainer = styled.div`
 	width: 100%;
@@ -22,6 +22,10 @@ const Styled404 = styled.div`
 	align-items: center;
 	font-size: 25rem;
 	color: #1976d2;
+	width: 50%;
+	img {
+		width: 80%;
+	}
 `;
 
 const StyledHeader = styled.h1`
@@ -45,7 +49,7 @@ const StyledLink = styled(Link)`
 const NotFound = () => (
 	<StyledContainer>
 		<Styled404>
-			4 <img src={HotDogIcon}></img> 4
+			<img src={NotFoundIcon}></img>
 		</Styled404>
 		<StyledHeader>Coś pożarło tę stronę.</StyledHeader>
 		<StyledLink to={routes.home}>
