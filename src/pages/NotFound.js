@@ -9,7 +9,7 @@ import HotDogIcon from 'assets/icons/hotDogIcon.svg';
 
 const StyledContainer = styled.div`
 	width: 100%;
-	height: 100%;
+	height: 100vh;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -36,6 +36,9 @@ const StyledLink = styled(Link)`
 
 	&:hover {
 		cursor: pointer;
+	}
+	button {
+		width: 100% !important;
 	}
 `;
 
