@@ -58,7 +58,7 @@ const InputContainer = styled.div`
 	margin-bottom: 2rem;
 `;
 
-const EditButtonContainer = styled.div`
+const ButtonContainer = styled.div`
 	width: 100%;
 	display: flex;
 	justify-content: flex-end;
@@ -141,10 +141,9 @@ const HomePage = ({
 				.then((res) => res.json())
 				.then((json) => {
 					json.forEach((place) => {
-						if (place.coordinateY === coordinateY) {
-							if (place.coordinateX === coordinateX) {
+						if (place.coordinateY === coordinateY && place.coordinateX === coordinateX) {
 								alert.error('Istnieje już lokal na podanych koordynatach');
-							} else {
+						} else {
 								placeService
 									.addPlace(
 										city,
@@ -159,11 +158,11 @@ const HomePage = ({
 									.then(() => {
 										setPlaceModalIsOpen(false);
 										alert.success('Lokal został dodany');
+										window.location.reload(true);
 									})
 									.catch(() => {
 										alert.error('Coś poszło nie tak');
 									});
-							}
 						}
 					});
 				})
@@ -431,17 +430,16 @@ const HomePage = ({
 									/>
 								</CoordinatesInput>
 							</InputContainer>
-							<EditButtonContainer>
+							<ButtonContainer>
 								<Button
 									buttonSize="md"
 									buttonType="primary"
 									type="submit"
 									disabled={!isValid}
-									onClick={onSubmit}
 								>
 									Zapisz
 								</Button>
-							</EditButtonContainer>
+							</ButtonContainer>
 						</Form>
 					)}
 				</Formik>
