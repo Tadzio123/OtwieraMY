@@ -284,12 +284,7 @@ const HomePage = ({
 			);
 		}
 		// default menu (user)
-		return (
-			<Menu
-				type="UserDefault"
-				buttonGpsClick={getUserLocation}
-			/>
-		);
+		return <Menu type="UserDefault" buttonGpsClick={getUserLocation} />;
 	};
 
 	return (
@@ -442,6 +437,7 @@ const HomePage = ({
 									buttonType="primary"
 									type="submit"
 									disabled={!isValid}
+									onClick={onSubmit}
 								>
 									Zapisz
 								</Button>
