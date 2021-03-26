@@ -147,10 +147,10 @@ const HomePage = ({
 								placeService
 									.addPlace(
 										city,
-										coordinateX,
-										coordinateY,
+										parseInt(coordinateX),
+										parseInt(coordinateY),
 										name,
-										number,
+										parseInt(number),
 										postalCode,
 										street,
 										authToken
@@ -167,15 +167,15 @@ const HomePage = ({
 					});
 				})
 				.catch(() => alert.error('Coś poszło nie tak'));
-		}
-		if (modalType.type === 'EDIT') {
+		}	if (modalType.type === 'EDIT') {
+			console.log(city, coordinateX, coordinateY, name, number, postalCode, street)
 			placeService
 				.updatePlace(
 					city,
-					coordinateX,
-					coordinateY,
+					parseInt(coordinateX),
+					parseInt(coordinateY),
 					name,
-					number,
+					parseInt(number),
 					postalCode,
 					street,
 					activeMarker,

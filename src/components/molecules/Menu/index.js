@@ -143,7 +143,7 @@ const handleMenuType = (
 				buttonCancelClick={buttonCancelClick}
 				buttonEditClick={buttonEditClick}
 				buttonDeleteClick={buttonDeleteClick}
-				buttonExitClick={buttonEditClick}
+				buttonExitClick={buttonExitClick}
 			/>
 		);
 	}
