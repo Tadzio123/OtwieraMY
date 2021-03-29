@@ -148,10 +148,10 @@ const HomePage = ({
 								placeService
 									.addPlace(
 										city,
-										parseInt(coordinateX),
-										parseInt(coordinateY),
+										parseFloat(coordinateX),
+										parseFloat(coordinateY),
 										name,
-										parseInt(number),
+										parseFloat(number),
 										postalCode,
 										street,
 										authToken
@@ -170,10 +170,10 @@ const HomePage = ({
 						placeService
 							.addPlace(
 								city,
-								parseInt(coordinateX),
-								parseInt(coordinateY),
+								parseFloat(coordinateX),
+								parseFloat(coordinateY),
 								name,
-								parseInt(number),
+								parseFloat(number),
 								postalCode,
 								street,
 								authToken
@@ -193,10 +193,10 @@ const HomePage = ({
 			placeService
 				.updatePlace(
 					city,
-					parseInt(coordinateX),
-					parseInt(coordinateY),
+					parseFloat(coordinateX),
+					parseFloat(coordinateY),
 					name,
-					parseInt(number),
+					parseFloat(number),
 					postalCode,
 					street,
 					activeMarker,
