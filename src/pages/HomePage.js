@@ -140,10 +140,11 @@ const HomePage = ({
 				.getAllPlacesCoordinates()
 				.then((res) => res.json())
 				.then((json) => {
-					json.forEach((place) => {
-						if (place.coordinateY === coordinateY && place.coordinateX === coordinateX) {
+					if(json.length > 0) {
+						json.forEach((place) => {
+							if (place.coordinateY === coordinateY && place.coordinateX === coordinateX) {
 								alert.error('Istnieje już lokal na podanych koordynatach');
-						} else {
+							} else {
 								placeService
 									.addPlace(
 										city,
@@ -163,12 +164,32 @@ const HomePage = ({
 									.catch(() => {
 										alert.error('Coś poszło nie tak');
 									});
-						}
-					});
+							}
+						});
+					} else {
+						placeService
+							.addPlace(
+								city,
+								parseInt(coordinateX),
+								parseInt(coordinateY),
+								name,
+								parseInt(number),
+								postalCode,
+								street,
+								authToken
+							)
+							.then(() => {
+								setPlaceModalIsOpen(false);
+								alert.success('Lokal został dodany');
+								window.location.reload(true);
+							})
+							.catch(() => {
+								alert.error('Coś poszło nie tak');
+							});
+					}
 				})
 				.catch(() => alert.error('Coś poszło nie tak'));
 		}	if (modalType.type === 'EDIT') {
-			console.log(city, coordinateX, coordinateY, name, number, postalCode, street)
 			placeService
 				.updatePlace(
 					city,
@@ -182,8 +203,9 @@ const HomePage = ({
 					authToken
 				)
 				.then(() => {
-					alert.success('Lokal został zakualizowany');
 					setPlaceModalIsOpen(false);
+					alert.success('Lokal został zakualizowany');
+					window.location.reload(true);
 				})
 				.catch(() => {
 					alert.error('Coś poszło nie tak');
